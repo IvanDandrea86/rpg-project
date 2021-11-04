@@ -1,0 +1,14 @@
+body {
+  background-color: orange;
+}
+
+.game-container {
+  position: relative;
+  margin: 0 auto;
+  width: 352px;
+  height: 198px;
+  outline: 2px solid #fff;
+  -webkit-transform: scale(3) translateY(50%);
+          transform: scale(3) translateY(50%);
+}
+/*# sourceMappingURL=style.css.map */

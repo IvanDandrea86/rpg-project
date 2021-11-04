@@ -1,0 +1,13 @@
+body{
+    background-color: orange;
+    
+}
+.game-container{
+    position: relative;
+    margin: 0 auto;
+    // margin-top : 20px;
+    width: 352px;
+    height: 198px;
+    outline: 2px solid #fff;
+    transform: scale(3) translateY(50%);
+}
