@@ -5,10 +5,50 @@ body {
 .game-container {
   position: relative;
   margin: 0 auto;
-  width: 352px;
-  height: 198px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 708px;
+  height: 396px;
   outline: 2px solid #fff;
-  -webkit-transform: scale(3) translateY(50%);
-          transform: scale(3) translateY(50%);
+}
+
+.game-container #action_1, .game-container #action_2 {
+  visibility: hidden;
+}
+
+.game-container #player1, .game-container #player2 {
+  visibility: visible;
+}
+
+.game-container .create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game-container .create input {
+  width: 50%;
+}
+
+.game-container .create select {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.game-container .create button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 /*# sourceMappingURL=style.css.map */

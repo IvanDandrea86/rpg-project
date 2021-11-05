@@ -5,9 +5,34 @@ body{
 .game-container{
     position: relative;
     margin: 0 auto;
-    // margin-top : 20px;
-    width: 352px;
-    height: 198px;
+    display: flex;
+    justify-content: space-around;
+    width: 708px;
+    height: 396px;
     outline: 2px solid #fff;
-    transform: scale(3) translateY(50%);
+    
+
+
+    #action_1,#action_2{
+        visibility: hidden;
+    }
+    #player1,#player2{
+        visibility: visible;
+    }
+    
+    .create{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        input{
+            width: 50%;
+        }
+        select{
+            width: fit-content;
+        }
+        button{
+            width: fit-content;
+        }
+        
+    }
 }
