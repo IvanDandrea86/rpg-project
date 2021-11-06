@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,10 @@
     <link rel="stylesheet" href="./src/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
-        
-        <div class="game-container">
-            <!-- <canvas class="game-canvas" width="352" height="198"></canvas> -->
-       
-        
+    <div class="game-container">
+        <!-- <canvas class="game-canvas" width="352" height="198"></canvas> -->
         <div class="create" id="player1">
             <label for="name">Name</label>
             <input id="name" type="text">
@@ -28,45 +27,46 @@
             <select id="item" type="text">
                 <option value="Boots">Boots</option>
                 <option value="Sword">Sword</option>
+                <option value="Staff">Staff</option>
                 <option value="Bow">Bow</option>
-                <option value="Saff">Staff</option>
             </select>
-                <button id="new_player">Add New Player</button>
-        
+            <button id="new_player">Add New Player</button>
+
             <div class="action" id="action_1">
-            <button id="attack">Attack</button>
-            <button id="heal">Heal</button>
-            <button id="showStat">Show Stats</button>
-        </div>  
+                <button id="attack">Attack</button>
+                <button id="heal">Heal</button>
+                <button id="showStat">Show Stats</button>
+            </div>
         </div>
         <div class="create" id="player2">
             <label for="name2">Name</label>
             <input id="name2" type="text">
-            <label for="item2">Class</label>
-            <select id="item2" type="text">
+            <label for="classe2">Class</label>
+            <select id="classe2" type="text">
                 <option value="Human">Human</option>
                 <option value="Orc">Orc</option>
                 <option value="Elf">Elf</option>
                 <option value="Vampire">Vampire</option>
             </select>
-            <label for="classe2">Item</label>
-            <select id="classe2" type="text">
+            <label for="item2">Item</label>
+            <select id="item2" type="text">
                 <option value="Boots">Boots</option>
                 <option value="Sword">Sword</option>
                 <option value="Staff">Staff</option>
-                <option value="Box">Bow</option>
-            </select>            
+                <option value="Bow">Bow</option>
+            </select>
             <button id="new_player2">Add New Player</button>
             <div class="action" id="action_2">
-             <button id="attack2">Attack</button>
-            <button id="heal2">Heal</button>
-            <button id="showStat2">Show Stats</button>
+                <button id="attack2">Attack</button>
+                <button id="heal2">Heal</button>
+                <button id="showStat2">Show Stats</button>
             </div>
-        </div> 
         </div>
     </div>
+    </div>
     <script src="./src/component/gamelogic.js "></script>
-    <script  src="./src/component/world.js"></script>
+    <script src="./src/component/world.js"></script>
     <script src="./src/component/character.js"></script>
 </body>
+
 </html>

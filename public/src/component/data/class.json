@@ -1,24 +1,24 @@
 {
-    "race":[ {
-         "name":"Human",
-         "power":"preventDmg",
-         "value":0.20
-         
-     },
-     {
-         "name":"Orc",
-         "power":"maxHealth"
-         ,"value":1.40
-     },
-     {
-         "name":"Elf",
-         "power":"deflectDmg",
-         "value":0.30
-     },
-     {
-         "name":"Vampire",
-         "power":"lifesteal",
-         "value":0.10
-     }
- ]
- }
+    "race": [{
+            "name": "Human",
+            "power": "preventDmg",
+            "value": 0.20
+
+        },
+        {
+            "name": "Orc",
+            "power": "bonusHealth",
+            "value": 0.40
+        },
+        {
+            "name": "Elf",
+            "power": "deflectDmg",
+            "value": 0.30
+        },
+        {
+            "name": "Vampire",
+            "power": "lifeSteal",
+            "value": 0.10
+        }
+    ]
+}

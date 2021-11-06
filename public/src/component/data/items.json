@@ -1,24 +1,24 @@
 {
-   "items":[ {
-        "name":"Boots",
-        "power":"dogeChance",
-        "value":0.30
-        
-    },
-    {
-        "name":"Sword",
-        "power":"extraDmg",
-        "value":0.30
-    },
-    {
-        "name":"Staff",
-        "power":"healingPower",
-        "value":0.20
-    },
-    {
-        "name":"Bow",
-        "power":"doubleAttack",
-        "value":0.30
-    }
-]
+    "items": [{
+            "name": "Boots",
+            "power": "dogeChance",
+            "value": 0.30
+
+        },
+        {
+            "name": "Sword",
+            "power": "extraDmg",
+            "value": 0.30
+        },
+        {
+            "name": "Staff",
+            "power": "healingPower",
+            "value": 0.20
+        },
+        {
+            "name": "Bow",
+            "power": "doubleAttack",
+            "value": 0.30
+        }
+    ]
 }
