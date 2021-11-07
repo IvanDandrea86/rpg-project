@@ -2,8 +2,8 @@ const url_class = "./src/component/data/class.json"
 const url_item = "./src/component/data/items.json"
     /**
      * Async Fetch
-     * @param {String} target-url json
-     * @returns  {Object} dataset
+     * @param {String} target -url json
+     * @returns  {JSON} dataset
      */
 const dataFetchAsync = async(target) => {
         const response = await fetch(target)
@@ -51,6 +51,46 @@ let updateRace = (obj, url) => {
             });
         return obj
     }
+/**
+ * Create Race List
+ * @param {HTMLElement} htmlElem -parent where append list
+ * @param {String} target -url json 
+ */
+ const createRaceList=(htmlElem,target)=>{
+    const item_array=new Array()
+        dataFetchAsync(target)
+        .then (data=>{
+            data.race.forEach(elem=>{
+                item_array.push(elem.name)
+            })
+            item_array.forEach(elem=>{
+                let newItem = document.createElement("option")
+                newItem.value=elem
+                newItem.innerHTML=elem
+                htmlElem.append(newItem)
+            })
+        })
+}
+/**
+ * Create Item List
+ * @param {HTMLElement} htmlElem -parent where append list
+ * @param {String} target -url json 
+ */
+const createItemList=(htmlElem,target)=>{
+    const item_array=new Array()
+        dataFetchAsync(target)
+        .then (data=>{
+            data.items.forEach(elem=>{
+                item_array.push(elem.name)
+            })
+            item_array.forEach(elem=>{
+                let newItem = document.createElement("option")
+                newItem.value=elem
+                newItem.innerHTML=elem
+                htmlElem.append(newItem)
+            })
+        })
+}
     /**
      * Add New Player
      * @param {String} name_character 
@@ -68,8 +108,8 @@ const abilitychance = (ability) => { return (Math.random() < ability) }
 
 /**
  * Damage Calculation
- * @param {Person} attacker - 
- * @param {Person} defeder -
+ *@param {Person} attacker 
+ * @param {Person} defender 
  */
 let damageCalculation = (attacker, defender) => {
 
@@ -95,6 +135,11 @@ let damageCalculation = (attacker, defender) => {
         console.log(totdmg)
     }
 }
+/**
+ * 
+ * @param {Person} attacker 
+ * @param {Person} defender 
+ */
 let checkLifeline = (attacker, defender) => {
     if (defender.currenthealth < 0) {
         console.log("Defender is dead")

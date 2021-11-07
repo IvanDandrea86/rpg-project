@@ -1,24 +1,49 @@
 {
     "items": [{
-            "name": "Boots",
+            "name": "Dagger",
             "power": "dogeChance",
             "value": 0.30
-
         },
         {
             "name": "Sword",
             "power": "extraDmg",
-            "value": 0.30
+            "value": 0.25
         },
         {
-            "name": "Staff",
+            "name": "Magic Staff",
             "power": "healingPower",
-            "value": 0.20
+            "value": 0.30
         },
         {
             "name": "Bow",
             "power": "doubleAttack",
             "value": 0.30
+        },
+        {
+            "name": "Axe",
+            "power": "doubleAttack",
+            "value": 0.15
+        },
+        {
+            "name": "Spear",
+            "power": "deflectDmg",
+            "value": 0.25
+        },
+        {
+            "name": "Hammer",
+            "power": "extraDmg",
+            "value": 0.25
+        },
+        {
+            "name": "Scimitar",
+            "power": "doubleAttack",
+            "value": 0.15
+        },
+        {
+            "name": "Bone",
+            "power": "preventDmg",
+            "value": 0.15
         }
     ]
+    
 }

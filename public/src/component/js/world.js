@@ -1,45 +1,62 @@
+//Select Game Element Section
+const gameTitle=document.getElementById("game_enter")
+const selectPlayer=document.getElementById("player_select")
+const main_game=document.getElementById("main_game")
+const createP1 =document.getElementById("player1")
+const createP2 =document.getElementById("player2")
 window.addEventListener("load", () => {
     console.log("World loaded")
-    var hero
-    var hero2
-
-    document.getElementById("new_player").addEventListener("click", () => {
-        document.getElementById("action_1").style.visibility = "visible"
-        document.getElementById("player1").style.visibility = "hidden"
-        let player_name = document.getElementById("name").value
-        let player_race = document.getElementById("classe").value
-        let player_item = document.getElementById("item").value
-        hero = addNewPlayer(player_name, player_race, player_item)
-
-        document.getElementById("attack").addEventListener("click", () => {
-            damageCalculation(hero, hero2)
-            checkLifeline(hero, hero2)
-        })
-        document.getElementById("heal").addEventListener("click", () => {
-            hero.heal();
-        })
-        document.getElementById("showStat").addEventListener("click", () => {
-            hero.showStat();
+    //Select Game Element Section
+    const gameTitle=document.getElementById("game_enter")
+    const selectPlayer=document.getElementById("player_select")
+    const main_game=document.getElementById("main_game")
+    const createP1 =document.getElementById("player1")
+    const createP2 =document.getElementById("player2")
+    document.getElementById("vsP2").addEventListener("click",()=>{
+        //vs P2 mode
+        var hero =new Person()
+        var hero2 =new Person()
+        //Go on Select Hero Menu
+        gameTitle.style.display="none"
+        selectPlayer.removeAttribute("style")
+        const itemSelect=document.getElementById("item")
+        createItemList(itemSelect,url_item)
+        const raceSelect=document.getElementById("races")
+        createRaceList(raceSelect,url_class)
+        createP1.removeAttribute("style")
+        document.getElementById("add_new_player").addEventListener("click",()=>{
+            //Add first player
+            let hero_name =document.getElementById("name").innerHTML
+            let hero_race=document.getElementById("races").value
+            let hero_item=document.getElementById("item").value
+            hero=addNewPlayer(hero_name,hero_race,hero_item)
+            hero.showStat()
+            hero.displayChar()
+            document.getElementById("add_new_player").innerHTML="Add Player 2"
+            document.getElementById("add_new_player").removeEventListener("click",()=>{})
+            document.getElementById("add_new_player").addEventListener("click",()=>{
+            //Add Second player
+            let hero_name =document.getElementById("name").innerHTML
+            let hero_race=document.getElementById("races").value
+            let hero_item=document.getElementById("item").value
+            hero2=addNewPlayer(hero_name,hero_race,hero_item)
+            hero2.showStat()
+            hero2.displayChar()
+            document.getElementById("add_new_player").innerHTML="Add Player 1"
+            document.getElementById("add_new_player").removeEventListener("click",()=>{})
+            selectPlayer.style.display="none"
+            main_game.removeAttribute("style")
+            // Load Main Game
+            setBackGroundImg("1")
+            //improve function to get the right character
+            animateImg("player1_img","Elf","IDLE","1")
+            animateImg("player2_img","Orc","IDLE","3")
+            gameStart() //Start Game Turn
+        })  
         })
     })
-    document.getElementById("new_player2").addEventListener("click", () => {
-        document.getElementById("action_2").style.visibility = "visible"
-        document.getElementById("player2").style.visibility = "hidden"
-        let player_name2 = document.getElementById("name2").value
-        let player_race2 = document.getElementById("classe2").value
-        let player_item2 = document.getElementById("item2").value
-        hero2 = addNewPlayer(player_name2, player_race2, player_item2)
-
-        document.getElementById("attack2").addEventListener("click", () => {
-            damageCalculation(hero2, hero)
-            checkLifeline(hero2, hero)
-        })
-        document.getElementById("heal2").addEventListener("click", () => {
-
-            hero2.heal();
-        })
-        document.getElementById("showStat2").addEventListener("click", () => {
-            hero2.showStat();
-        })
+    document.getElementById("vsCPU").addEventListener("click",()=>{
+        //vs CPU mode
     })
+  
 })

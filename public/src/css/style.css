@@ -1,4 +1,4 @@
-.main_game {
+#main_game {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,56 +11,60 @@
           align-items: center;
 }
 
-.main_game #backGroundContainer {
+#main_game #backGroundContainer {
   position: relative;
+  width: 380px;
+  height: 216px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   border: 2px solid black;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
-  margin: 10px;
 }
 
-.main_game #backGroundContainer #health {
+#main_game #backGroundContainer .player_one_container {
   position: absolute;
-  top: 5%;
-  left: 10%;
+  top: 15px;
+  left: 5px;
+  border: 1px solid red;
 }
 
-.main_game #backGroundContainer #health2 {
+#main_game #backGroundContainer .player_one_container img {
+  border: 1px solid blue;
+}
+
+#main_game #backGroundContainer .player_two_container {
   position: absolute;
-  top: 5%;
-  right: 10%;
+  top: 15px;
+  right: -5%;
+  border: 1px solid red;
 }
 
-.main_game #backGroundContainer #player1 {
-  position: absolute;
-  top: 50%;
-  left: 25%;
+#main_game #backGroundContainer .player_two_container img {
+  border: 1px solid blue;
 }
 
-.main_game #backGroundContainer #player2 {
-  position: absolute;
-  top: 50%;
-  right: 25%;
-}
-
-.main_game .log_container {
+#main_game .log_container {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+  padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 
-.main_game .log_container #actionBox {
-  width: 35%;
-  height: 35vh;
+#main_game .log_container #actionBox {
+  width: 30%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,19 +75,19 @@
   border: 2px solid black;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
-  margin: 10px;
 }
 
-.main_game .log_container #console {
-  width: 50%;
-  height: 35vh;
+#main_game .log_container #console {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 40%;
+  height: 50px;
   border: 2px solid black;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
-  margin: 10px;
 }
 
-.player_select {
+#player_select {
   position: relative;
   margin: 0 auto;
   display: -webkit-box;
@@ -93,15 +97,15 @@
       justify-content: space-around;
 }
 
-.player_select #action_1, .player_select #action_2 {
+#player_select #action_1, #player_select #action_2 {
   visibility: hidden;
 }
 
-.player_select #player1, .player_select #player2 {
+#player_select #player1, #player_select #player2 {
   visibility: visible;
 }
 
-.player_select .create {
+#player_select .create {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,20 +118,73 @@
           justify-content: center;
 }
 
-.player_select .create input {
+#player_select .create input {
   width: 50%;
 }
 
-.player_select .create select {
+#player_select .create select {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.player_select .create button {
+#player_select .create button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+}
+
+header {
+  position: fixed;
+}
+
+#game_enter {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#game_enter > * {
+  margin: 15px;
+}
+
+#game_enter > * li {
+  text-align: center;
 }
 
 body {
