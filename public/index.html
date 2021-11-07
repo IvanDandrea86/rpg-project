@@ -11,8 +11,22 @@
 </head>
 
 <body>
+    <header></header>
+    <div id="game_enter">
+        <h1>Game Title</h1>
+        <div id="backGroundContainer"style="width: 650px">
+        <img id="player_img" style="width: 250px" alt="">
+        <img id="player2_img" style="width: 250px;transform: rotateY(180deg);" alt="">
+        </div>    
+        <ul>
+                <li><button>1P vs 2P</button></li>
+                <li><button disabled>1P vs CPU</button></li>
+                <li><button>Settings</button></li>
+            </ul>
+        </div> 
+       </div>
     <div class="game-container">
-        <!-- <canvas class="game-canvas" width="352" height="198"></canvas> -->
+     
         <div class="create" id="player1">
             <label for="name">Name</label>
             <input id="name" type="text">
@@ -64,9 +78,11 @@
         </div>
     </div>
     </div>
-    <script src="./src/component/gamelogic.js "></script>
-    <script src="./src/component/world.js"></script>
-    <script src="./src/component/character.js"></script>
+  
+    <script src="./src/component/js/animate.js"></script>
+    <script src="./src/component/js/character.js "></script>
+    <script src="./src/component/js/gamelogic.js"></script>
+    <script src="./src/component/js/world.js"></script>
 </body>
 
 </html>

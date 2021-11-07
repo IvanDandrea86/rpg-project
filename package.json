@@ -20,7 +20,10 @@
     },
     "homepage": "https://github.com/IvanDandrea86/rpg-project#readme",
     "dependencies": {
-        "express": "^4.17.1"
+        "-": "^0.0.1",
+        "express": "^4.17.1",
+        "g": "^2.0.1",
+        "nodemon": "^2.0.14"
     },
     "devDependencies": {
         "jest": "^27.3.1"

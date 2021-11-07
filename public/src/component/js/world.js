@@ -32,7 +32,7 @@ window.addEventListener("load", () => {
 
         document.getElementById("attack2").addEventListener("click", () => {
             damageCalculation(hero2, hero)
-            checkLifeline(hero2, hero1)
+            checkLifeline(hero2, hero)
         })
         document.getElementById("heal2").addEventListener("click", () => {
 

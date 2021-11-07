@@ -1,5 +1,12 @@
 body {
-  background-color: orange;
+  background-color: lightseagreen;
+}
+
+#backGroundContainer {
+  width: 396px;
+  height: 192px;
+  background-image: url("../image/background/PNG/game_background_1/game_background_1.png ");
+  background-size: contain;
 }
 
 .game-container {
@@ -10,9 +17,8 @@ body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 708px;
-  height: 396px;
-  outline: 2px solid #fff;
+  width: 396px;
+  height: 192px;
 }
 
 .game-container #action_1, .game-container #action_2 {
