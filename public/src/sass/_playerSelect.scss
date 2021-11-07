@@ -1,0 +1,29 @@
+.player_select{
+
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+        #action_1,#action_2{
+            visibility: hidden;
+        }
+        #player1,#player2{
+            visibility: visible;
+        }
+        
+        .create{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            input{
+                width: 50%;
+            }
+            select{
+                width: fit-content;
+            }
+            button{
+                width: fit-content;
+            }
+            
+        }
+    }

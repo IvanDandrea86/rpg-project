@@ -6,7 +6,7 @@ img.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_01__"+mode+"_000.png"
 }
 let setBackGroundImg=(set)=>{
     let backGroundContainer =document.getElementById("backGroundContainer")
-    backGroundContainer.style.backgroundImage= "url('./src/image/background/_PNG/game_background_"+set+"/game_background_"+set+".png')"
+    backGroundContainer.style.backgroundImage= "url('./src/image/background/PNG/game_background_"+set+"/game_background_"+set+".png')"
 }
 let animateImg=(elem,race,mode,color)=>{
     let timer=setInterval(() => {
@@ -18,10 +18,10 @@ let animateImg=(elem,race,mode,color)=>{
         i=0
         // clearInterval(timer)
     }
-}, 75);
+}, 115);
 }
-// setBackGroundImg("1")
-animateImg("player_img","Orc","HURT","2")
-animateImg("player2_img","Elf","ATTACK","2")
+setBackGroundImg("3")
+animateImg("player_img","Orc","IDLE","2")
+animateImg("player2_img","Elf","IDLE","2")
 
 

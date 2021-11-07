@@ -1,45 +1,5 @@
+@import 'mainGame';
+@import 'playerSelect.scss';
 body{
     background-color: lightseagreen;
-}
-
-#backGroundContainer{
-    width: 396px;
-    height: 192px;
-    background-image: url('../image/background/PNG/game_background_1/game_background_1.png ');
-    background-size:contain
-}
-.game-container{
-
-    position: relative;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    width: 396px;
-    height: 192px;
-  
-    
-  
-    
-    #action_1,#action_2{
-        visibility: hidden;
-    }
-    #player1,#player2{
-        visibility: visible;
-    }
-    
-    .create{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        input{
-            width: 50%;
-        }
-        select{
-            width: fit-content;
-        }
-        button{
-            width: fit-content;
-        }
-        
-    }
 }
