@@ -64,7 +64,9 @@ function Person(heroName, race, item) {
         }
         // this.totalDamage = this.damage();
     this.displayChar = () => {
-        return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
+        return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.currenthealth}`);
     };
+
+ 
 
 }

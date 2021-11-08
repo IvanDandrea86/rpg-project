@@ -21,10 +21,10 @@ let updateItem = (obj, url) => {
             .then(data => {
                 data.items.forEach(elem => {
                     if (elem.name == obj.item) {
+                        console.log("item found")
                         obj[elem.power] += elem.value
                     }
-                });
-
+                })
             })
         return obj
     }
@@ -39,10 +39,10 @@ let updateRace = (obj, url) => {
             .then(data => {
                 data.race.forEach(elem => {
                     if (elem.name == obj.race) {
-                        console.log("found")
+                        console.log("Race found")
                         obj[elem.power] += elem.value
                         if (elem.name == "Orc") {
-                            console.log("trovato")
+                            console.log("Orc trovato")
                             obj['maxHealth'] = obj['maxHealth'] * (1 + (obj['bonusHealth']))
                             obj['currenthealth'] = obj['maxHealth']
                         }
@@ -76,12 +76,16 @@ let updateRace = (obj, url) => {
  * @param {HTMLElement} htmlElem -parent where append list
  * @param {String} target -url json 
  */
-const createItemList=(htmlElem,target)=>{
+const createItemList=(htmlElem,target,race)=>{
     const item_array=new Array()
         dataFetchAsync(target)
         .then (data=>{
             data.items.forEach(elem=>{
-                item_array.push(elem.name)
+                elem.race.forEach(element=>{
+                    if(element==race)
+                    item_array.push(elem.name)
+                })
+              
             })
             item_array.forEach(elem=>{
                 let newItem = document.createElement("option")
@@ -91,6 +95,13 @@ const createItemList=(htmlElem,target)=>{
             })
         })
 }
+const clearItemSelect=(htmlElem)=>{
+    var i, L = htmlElem.options.length - 1;
+   for(i = L; i >= 0; i--) {
+    htmlElem.remove(i);
+   }
+}
+
     /**
      * Add New Player
      * @param {String} name_character 
@@ -102,6 +113,7 @@ const addNewPlayer = (name_character, race, item) => {
     let obj = new Person(name_character, race, item)
     obj = updateRace(obj, url_class)
     obj = updateItem(obj, url_item)
+    console.log(obj)
     return obj
 }
 const abilitychance = (ability) => { return (Math.random() < ability) }

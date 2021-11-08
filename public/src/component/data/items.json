@@ -2,48 +2,64 @@
     "items": [{
             "name": "Dagger",
             "power": "dogeChance",
-            "value": 0.30
+            "value": 0.30,
+            "race":["Elf"]
         },
         {
             "name": "Sword",
             "power": "extraDmg",
-            "value": 0.25
+            "value": 0.25,
+            "race":["Knight"]
         },
         {
             "name": "Magic Staff",
             "power": "healingPower",
-            "value": 0.30
+            "value": 0.30,
+            "race":["Elf"]
         },
         {
             "name": "Bow",
             "power": "doubleAttack",
-            "value": 0.30
+            "value": 0.30,
+            "race":["Elf"]
         },
         {
             "name": "Axe",
             "power": "doubleAttack",
-            "value": 0.15
+            "value": 0.15,
+            "race":["Knight"]
         },
         {
             "name": "Spear",
             "power": "deflectDmg",
-            "value": 0.25
+            "value": 0.25,
+            "race":["Knight"]
         },
         {
             "name": "Hammer",
             "power": "extraDmg",
-            "value": 0.25
+            "value": 0.25,
+            "race":["Troll","Orc"]
         },
         {
             "name": "Scimitar",
             "power": "doubleAttack",
-            "value": 0.15
+            "value": 0.15,
+            "race":["Orc"]
         },
         {
             "name": "Bone",
             "power": "preventDmg",
-            "value": 0.15
+            "value": 0.15,
+            "race":["Troll"]
+        },
+        {
+            "name": "Bat",
+            "power": "dogeChance",
+            "value": 0.15,
+            "race":["Orc","Troll"]
         }
     ]
+    
     
 }

@@ -1,6 +1,6 @@
 {
     "race": [{
-            "name": "Human",
+            "name": "Knight",
             "power": "preventDmg",
             "value": 0.20
 

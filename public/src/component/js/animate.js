@@ -1,5 +1,4 @@
 var frame_counter=0
-
 /**
  *  Slect Hero Imgae
  * @param {String} race 
@@ -28,8 +27,7 @@ let setBackGroundImg=(set)=>{
 let animateImg=(elem,race,mode,color)=>{
     let timer=setInterval(() => {
     const maxFrame=10  
-    let img = document.getElementById(elem)
-    img.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_0"+color+"__"+mode+"_00"+frame_counter+".png"
+    elem.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_0"+color+"__"+mode+"_00"+frame_counter+".png"
     frame_counter++
     if (frame_counter >= maxFrame){ 
         frame_counter=0
