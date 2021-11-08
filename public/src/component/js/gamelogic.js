@@ -25,32 +25,55 @@ let updateItem = (obj, url) => {
                         obj[elem.power] += elem.value
                     }
                 })
+                return obj
             })
-        return obj
+       
     }
     /**
      * Update Race
-     * @param {Person} onj - object Person  
+     * @param {Person} person - object Person  
      * @param {String} url - url json
      * @returns {Person}
      */
-let updateRace = (obj, url) => {
+let updateRace = (person, url) => {
         dataFetchAsync(url)
-            .then(data => {
-                data.race.forEach(elem => {
-                    if (elem.name == obj.race) {
+            .then((data) => {
+                let datas=data.race
+                 datas.forEach(elem => {
+                    if (elem.name == person.race) {
                         console.log("Race found")
-                        obj[elem.power] += elem.value
+                        person[elem.power] += elem.value
                         if (elem.name == "Orc") {
                             console.log("Orc trovato")
-                            obj['maxHealth'] = obj['maxHealth'] * (1 + (obj['bonusHealth']))
-                            obj['currenthealth'] = obj['maxHealth']
+                            person['maxHealth'] = person['maxHealth'] * (1 + (person['bonusHealth']))
+                            person['currenthealth'] = person['maxHealth']
                         }
                     }
                 });
-            });
-        return obj
+     
+            })  
+        
     }
+    let updateRace2 = (person, url) => {
+        dataFetchAsync(url)
+            .then((data) => {
+                let datas=data.race
+                 datas.forEach(elem => {
+                    if (elem.name == person.race) {
+                        console.log("Race found")
+                        person[elem.power] += elem.value
+                        if (elem.name == "Orc") {
+                            console.log("Orc trovato")
+                            person['maxHealth'] = person['maxHealth'] * (1 + (person['bonusHealth']))
+                            person['currenthealth'] = person['maxHealth']
+                        }
+                    }
+                });
+     
+            })  
+        
+    }
+
 /**
  * Create Race List
  * @param {HTMLElement} htmlElem -parent where append list
@@ -101,21 +124,8 @@ const clearItemSelect=(htmlElem)=>{
     htmlElem.remove(i);
    }
 }
-
-    /**
-     * Add New Player
-     * @param {String} name_character 
-     * @param {String} race 
-     * @param {String} item 
-     * @returns {Person}
-     */
-const addNewPlayer = (name_character, race, item) => {
-    let obj = new Person(name_character, race, item)
-    obj = updateRace(obj, url_class)
-    obj = updateItem(obj, url_item)
-    console.log(obj)
-    return obj
-}
+ 
+// }
 const abilitychance = (ability) => { return (Math.random() < ability) }
 
 /**
@@ -153,11 +163,39 @@ let damageCalculation = (attacker, defender) => {
  * @param {Person} defender 
  */
 let checkLifeline = (attacker, defender) => {
-    if (defender.currenthealth < 0) {
+    if (defender.currenthealth <= 0) {
+        writeOnConsole("Defender is dead")
         console.log("Defender is dead")
+        return true
     }
-    if (attacker.currenthealth < 0) {
-        console.log("Attacker is dead")
+    if (attacker.currenthealth <=0) {
+        writeOnConsole("Attacker is dead")
+        console.log("Defender is dead")
+        return true
+    }
+}
+let drawStat=(htmlElem,obj)=>{
+    const attributeList=["heroName","currenthealth","extraDmg","doubleAttack","healingPower","dogeChance","preventDmg","preventDmg"]
+    let list = document .createElement("ul")
+    for (var propriety in obj){
+        for (let i=0; i<attributeList.length; i++){
+            if (attributeList[i]==propriety){
+                let elem=document.createElement("li")
+                elem.innerHTML=`${propriety}: ${obj[propriety]}`
+                list.append(elem)
+            }
+        }       
+    }    
+    htmlElem.append(list)
+}
+let writeOnConsole=(string)=>{
+    let message=document.createElement("p")
+    message.innerHTML=string
+    let parentNode=document.getElementById("console")
+    parentNode.append(message)
+    let childnode_array = Array.from(parentNode.childNodes).length
+    if(childnode_array>3){
+        parentNode.removeChild(parentNode.childNodes[0])
     }
 
 }

@@ -24,44 +24,25 @@ function Person(heroName, race, item) {
         this.preventDmg = 0.05;
         this.deflectDmg = 0.05;
     }
+    this
     this.heal = () => {
         if (this.currenthealth < this.maxHealth) {
             let heal = (Math.floor(Math.random() * (this.maxHealth - this.min + 1) + this.min))
             this.currenthealth += heal
-            console.log("I Heal myself i gain =" + heal);
+            writeOnConsole(`I Heal myself i gain = ${heal}`);
             if (this.currenthealth > this.maxHealth) {
                 this.currenthealth = this.maxHealth
             }
+        }else{
+            console.log("Your Healt is Max")
         }
     };
 
     this.damage = () => {
         let dmg = (1 + this.extraDmg) * (Math.floor(Math.random() * (this.maxDamage - this.min + 1) + this.min))
-        console.log("I Attack and i deal = " + dmg * (1 + this.extraDmg))
         return dmg
     }
-    this.showStat = () => {
-            var stat = {
-                "Name": this.heroName,
-                "Race": this.race,
-                "Item": this.item,
-                "Healt": this.currenthealth,
-                "Max Health": this.maxHealth,
-                "Bonus Health": this.bonusHealth,
-                "Min Damage": this.min,
-                "Max Damage": this.maxDamage,
-                "Extra Damage": this.extraDmg,
-                "Max Healing": this.maxHealing,
-                "Mana": this.mana,
-                "Healing Power": this.healingPower,
-                "Double Attack Chance": this.doubleAttack,
-                "Doge Chage": this.dogeChance,
-                "Life Steal": this.lifeSteal,
-                "Prevent Damage": this.preventDmg,
-                "Deflect Dalage": this.deflectDmg
-            }
-            console.table(stat)
-        }
+  
         // this.totalDamage = this.damage();
     this.displayChar = () => {
         return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.currenthealth}`);

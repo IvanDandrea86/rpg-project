@@ -48,8 +48,10 @@
         #console{
             margin-left: 10px;
             margin-right: 10px;
-            width: 40%;
-            height: 50px;
+            width: 45%;
+            height: fit-content;
+            max-height: 50%;
+          
             border:2px solid black;
             box-shadow: 5.5px 5.5px darkslategrey;
             
