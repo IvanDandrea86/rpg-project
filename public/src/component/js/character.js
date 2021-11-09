@@ -24,17 +24,18 @@ function Person(heroName, race, item) {
         this.preventDmg = 0.05;
         this.deflectDmg = 0.05;
     }
-    this
+
     this.heal = () => {
         if (this.currenthealth < this.maxHealth) {
             let heal = (Math.floor(Math.random() * (this.maxHealth - this.min + 1) + this.min))
             this.currenthealth += heal
-            writeOnConsole(`I Heal myself i gain = ${heal}`);
+            writeOnConsole(`I Heal myself i gain = ${heal}`, console_action);
             if (this.currenthealth > this.maxHealth) {
                 this.currenthealth = this.maxHealth
             }
+            return heal
         } else {
-            writeOnConsole("Your Healt is alredy full")
+            writeOnConsole("Your Healt is alredy full", console_action)
         }
     };
 
@@ -45,9 +46,6 @@ function Person(heroName, race, item) {
 
     // this.totalDamage = this.damage();
     this.displayChar = () => {
-        return writeOnConsole(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.currenthealth}`);
+        return writeOnConsole(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.currenthealth}`, console_action);
     };
-
-
-
 }

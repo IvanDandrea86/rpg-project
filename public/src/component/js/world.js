@@ -25,6 +25,8 @@ const backgroundPreview = document.getElementById("background")
 const backgroundPreviewImg = document.getElementById("preview")
 const popUpEnd = document.getElementById("popUpEnd")
 const btnMenu = document.getElementById("settings")
+const console_status = document.getElementById("console_action")
+const console_action = document.getElementById("console")
 var valueBackground = "1"
     // audio = new Audio();
     // audio.src = "https://vgmsite.com/soundtracks/halo-infinite-set-a-fire-in-your-heart/njazlospea/01%20Set%20a%20Fire%20in%20Your%20Heart.mp3";
@@ -49,8 +51,6 @@ let endGame = () => {
     })
     popUpEnd.removeAttribute("style")
 }
-
-
 let takeAction = (obj, obj1) => {
     document.getElementById("attack").addEventListener("click", () => {
         damageCalculation(obj, obj1)
@@ -63,31 +63,30 @@ let takeAction = (obj, obj1) => {
         let temp = obj
         obj = obj1
         obj1 = temp
-        writeOnConsole(` Turn Switched is now ${obj.heroName} turn`)
+        writeOnConsole(`${obj.heroName} turn`, console_status)
     })
     document.getElementById("heal").addEventListener("click", () => {
-        obj.heal()
+        let y = obj.heal()
+        console.log(y)
         gameEnd = checkLifeline(obj, obj1)
         let temp = obj
         obj = obj1
         obj1 = temp
-        writeOnConsole(`Turn Switched is now ${obj.heroName} turn`)
+        writeOnConsole(` ${obj.heroName} turn`, console_status)
     })
-
 }
-
 let startBattle = (obj, obj1) => {
     let player1_img = document.getElementById("player1_img")
     let player2_img = document.getElementById("player2_img")
     selectPlayer.style.display = "none"
     main_game.removeAttribute("style")
 
-    writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`)
+    writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
     setBackGroundImg(backGround)
     animateImg(player1_img, obj.race, "IDLE", model, timer1)
     animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
     attacker = selectFirstPlayerTurn(hero, hero2)
-    writeOnConsole(`${attacker.heroName} start first`)
+    writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {
         defender = obj1
     } else {
@@ -95,7 +94,6 @@ let startBattle = (obj, obj1) => {
     }
     takeAction(attacker, defender)
 }
-
 let createMenuSelect = () => {
     // audio.play()
     gameTitle.style.display = "none"

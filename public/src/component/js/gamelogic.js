@@ -115,22 +115,23 @@ let damageCalculation = (attacker, defender) => {
 
         let lifesteal = (attacker.lifeSteal) * (defender.currenthealth)
         let x = attacker.damage()
+        console.log(x)
         let totdmg = x + lifesteal
         if (abilitychance(attacker.doubleAttack) == true) { //double attack calculator
-            writeOnConsole(`${attacker.heroName} made a double attack`)
+            writeOnConsole(`${attacker.heroName} made a double attack`, console_action)
             totdmg = totdmg * 2
         }
         if (abilitychance(defender.dogeChance) == true) { //double attack calculator
-            writeOnConsole(`${defender.heroName} doge the attack`)
+            writeOnConsole(`${defender.heroName} doge the attack`, console_action)
         } else if (abilitychance(defender.preventDmg) == true) { //double attack calculator
-            writeOnConsole(`${defender.heroName} prevent the attack`)
+            writeOnConsole(`${defender.heroName} prevent the attack`, console_action)
         } else if (abilitychance(defender.deflectDmg) == true) { //double attack calculator
-            writeOnConsole(`${defender.heroName} deflect the attack and deals ${totdmg}`)
+            writeOnConsole(`${defender.heroName} deflect the attack and deals ${totdmg}`, console_action)
             attacker.currenthealth = attacker.currenthealth - totdmg
         } else {
             defender.currenthealth = defender.currenthealth - totdmg
             writeOnConsole(`${attacker.heroName} successfully attacked and deals ${totdmg}.\n
-                            ${defender.heroName} has now ${defender.currenthealth}`)
+                            ${defender.heroName} has now ${defender.currenthealth}`, console_action)
         }
     }
     /**
@@ -140,12 +141,12 @@ let damageCalculation = (attacker, defender) => {
      */
 let checkLifeline = (attacker, defender) => {
     if (defender.currenthealth <= 0) {
-        writeOnConsole(`${defender.heroName} is dead`)
+        writeOnConsole(`${defender.heroName} is dead`, console_status)
 
         return true
     }
     if (attacker.currenthealth <= 0) {
-        writeOnConsole(`${attacker.heroName} is dead`)
+        writeOnConsole(`${attacker.heroName} is dead`, console_status)
         return true
     }
 }
@@ -163,13 +164,12 @@ let drawStat = (htmlElem, obj) => {
     }
     htmlElem.append(list)
 }
-let writeOnConsole = (string) => {
+let writeOnConsole = (string, parentNode) => {
     let message = document.createElement("li")
     message.innerHTML = string
-    let parentNode = document.getElementById("console_message")
     parentNode.append(message)
     let childnode_array = Array.from(parentNode.childNodes).length
-    if (childnode_array > 5) {
+    if (childnode_array > 1) {
         parentNode.removeChild(parentNode.childNodes[0])
     }
 

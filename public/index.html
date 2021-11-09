@@ -62,11 +62,13 @@
                 <div id="class_container">
                     <label for="races">Class</label>
                     <select class="select-css" id="races" type="text">
+                        <option value="" selected></option>
                     </select>
                 </div>
                 <div id="item_container" style="display:none;">
                     <label for="item">Item</label>
                     <select class="select-css" id="item" type="text">
+                        
                     </select>
                 </div>
                 <button id="add_player1">Add Player 1</button>
@@ -80,6 +82,7 @@
                 <div id="class_container2">
                     <label for="races2">Class</label>
                     <select class="select-css" id="races2" type="text">
+                        <option value="" selected></option>
                     </select>
                 </div>
                 <div id="item_container2" style="display:none;">
@@ -93,13 +96,24 @@
 
     </div>
     <div id="main_game" style="display: none;">
-        <div id="backGroundContainer">
-            <div class="player_one_container">
-                <img class="hero_img " id="player1_img" alt=" ">
+        <div id="turn_container">
+            <ul id="console_action"></ul>
+        </div>
+        <div class="row">
+            <div id="player1_stats">
+                <table>
+
+                </table>
             </div>
-            <div class="player_two_container">
-                <img class="hero_img " id="player2_img" alt=" ">
+            <div id="backGroundContainer">
+                <div class="player_one_container">
+                    <img class="hero_img " id="player1_img" alt=" ">
+                </div>
+                <div class="player_two_container">
+                    <img class="hero_img " id="player2_img" alt=" ">
+                </div>
             </div>
+            <div id="player2_stats"></div>
         </div>
 
         <div class="log_container">
