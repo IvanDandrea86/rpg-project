@@ -1,23 +1,28 @@
 #main_game{
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     #backGroundContainer{
+       
         position: relative;
         width: 380px;
         height: 216px;
         justify-content: space-between;
         background-size: contain;
         background-repeat: no-repeat;
-        border:2px solid black;
+        border:5px solid black;
+        border-radius: 6%;
         box-shadow: 5.5px 5.5px darkslategrey;
         .player_one_container{ //Player 1
             position:absolute;
             top: 15px;
             left: 5px;
-            border :1px solid red;
+            width: fit-content;
             img{
-                border :1px solid blue; 
+                width: 240px; 
+                align-self: baseline;
             }
             }
         .player_two_container{ //Player 2
@@ -25,8 +30,10 @@
             top: 15px;
             right: -5%;
             border :1px solid red;
+            width: fit-content;
             img{
-                border :1px solid blue; 
+                width:240px ;
+                transform: rotateY(180deg);
             }
         }
     }
@@ -40,6 +47,7 @@
             width: 30%;
             height: fit-content;
             display: flex;
+            align-items: center;
             flex-direction: column;
             border:2px solid black;
             box-shadow: 5.5px 5.5px darkslategrey;

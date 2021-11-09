@@ -1,19 +1,16 @@
 #player_select{
-    position: relative;
-    margin: 0 auto;
+    height: 100vh;
     display: flex;
-    justify-content: space-around;
-        #action_1,#action_2{
-            visibility: hidden;
-        }
-        #player1,#player2{
-            visibility: visible;
-        }
-        
-        .create{
+    justify-content: center;   
+    align-items: center;
+        .create{margin: 4vw;
+            border:2px solid black;
+            border-radius: 12%;
+            box-shadow: 5.5px 5.5px darkslategrey;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             input{
                 width: 50%;
             }

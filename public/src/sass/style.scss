@@ -2,7 +2,31 @@
 @import 'playerSelect.scss';
 @import 'responsive';
 @import 'titleMenu';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body{
-    background-color: lightseagreen;
+
+    background: -webkit-radial-gradient(rgb(22, 237, 160), rgb(20, 90, 71));
+    background: radial-gradient(rgb(22, 237, 160), rgb(20, 90, 71));
+    font-family: 'Press Start 2P', cursive;
+    button{
+        font-family: 'Press Start 2P', cursive;
+        font-size: 1.25rem;
+        background: transparent;
+        // border-radius: 6%;
+        // border:1px solid rgb(20, 90, 71);
+        border-style: none;
+        width:12rem;
+        height: 3rem;
+        &:hover{
+            color: rgb(20, 90, 71);
+            transform: scale(1.1) translateY(-1%);
+    } 
+    input{
+        font-family: 'Press Start 2P', cursive;
+        background-color: transparent;
+    }  
+
+}
+
 }

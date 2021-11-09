@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 #main_game {
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6,6 +8,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -20,7 +25,8 @@
           justify-content: space-between;
   background-size: contain;
   background-repeat: no-repeat;
-  border: 2px solid black;
+  border: 5px solid black;
+  border-radius: 6%;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
 }
@@ -29,11 +35,15 @@
   position: absolute;
   top: 15px;
   left: 5px;
-  border: 1px solid red;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #main_game #backGroundContainer .player_one_container img {
-  border: 1px solid blue;
+  width: 240px;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
 }
 
 #main_game #backGroundContainer .player_two_container {
@@ -41,10 +51,15 @@
   top: 15px;
   right: -5%;
   border: 1px solid red;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #main_game #backGroundContainer .player_two_container img {
-  border: 1px solid blue;
+  width: 240px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 #main_game .log_container {
@@ -68,6 +83,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -91,24 +109,24 @@
 }
 
 #player_select {
-  position: relative;
-  margin: 0 auto;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-#player_select #action_1, #player_select #action_2 {
-  visibility: hidden;
-}
-
-#player_select #player1, #player_select #player2 {
-  visibility: visible;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #player_select .create {
+  margin: 4vw;
+  border: 2px solid black;
+  border-radius: 12%;
+  -webkit-box-shadow: 5.5px 5.5px darkslategrey;
+          box-shadow: 5.5px 5.5px darkslategrey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -119,6 +137,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #player_select .create input {
@@ -191,6 +212,27 @@ header {
 }
 
 body {
-  background-color: lightseagreen;
+  background: radial-gradient(#16eda0, #145a47);
+  font-family: 'Press Start 2P', cursive;
+}
+
+body button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.25rem;
+  background: transparent;
+  border-style: none;
+  width: 12rem;
+  height: 3rem;
+}
+
+body button:hover {
+  color: #145a47;
+  -webkit-transform: scale(1.1) translateY(-1%);
+          transform: scale(1.1) translateY(-1%);
+}
+
+body button input {
+  font-family: 'Press Start 2P', cursive;
+  background-color: transparent;
 }
 /*# sourceMappingURL=style.css.map */
