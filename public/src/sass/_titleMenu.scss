@@ -1,16 +1,23 @@
-header{
+header {
     position: fixed;
 }
-#game_enter{
+
+#game_enter {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &>*{
+    &>* {
         margin: 15px;
-        li{
+        li {
             text-align: center;
+            button:active {
+                transform: translateY(-15px);
+            }
         }
+    }
+    h1 {
+        text-align: center;
     }
 }

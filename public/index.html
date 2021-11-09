@@ -13,9 +13,29 @@
 <body>
 
     <header>
-        <button>Settings</button></header>
+        <button id="settings">Setting</button></header>
+    <div id="menu_settings" style="display:none">
+        <table id="settings_table">
+            <td>SFX</td>
+            <td><label class="switch SFX">
+                        <input id="sfx" type="checkbox">
+                        <span class="slider round"></span>
+                    </label></td>
+            </tr>
+            <tr>
+                <td>Music</td>
+                <td><label class="switch Music">
+                            <input id="music" type="checkbox">
+                            <span class="slider round"></span>
+                        </label></td>
+            </tr>
+            <td colspan="2" id="reset" style="cursor:pointer">Reset</td>
+            </tr>
+        </table>
+
+    </div>
     <div id="game_enter">
-        <h1>Game Title</h1>
+        <h1>Battle Realms</h1>
         <ul>
             <li><button id="vsP2">1P vs 2P</button></li>
             <li><button id="vsCPU" disabled>1P vs CPU</button></li>
@@ -23,20 +43,22 @@
     </div>
     <!-- Player Select Section -->
     <div id="player_select" style="display: none;">
-        <div class="create" id="backgroundSelect">
+        <div class="bg_container" id="backgroundSelect">
             <div id="preview"></div>
             <label for="background">Arena</label>
             <select class="select-css" name="" id="background">
-                <option value="1">The Orc Camp</option>
-                <option value="2">The Castel</option>
-                <option value="3">Sky City</option>
+                <option value="1"  selected="selected">The Orc Camp</option>
+                <option value="3">The Castel</option>
+                <option value="2">Sky City</option>
                 <option value="4">The Village</option>
             </select>
         </div>
         <div class="players_container">
             <div class="create" id="player1Create">
-                <label for="name">Name</label>
-                <input id="name" value="Player 1" type="text">
+                <div class="name_container">
+                    <label for="name">Name
+                <input id="name" value="Player 1" type="text"></label>
+                </div>
                 <div id="class_container">
                     <label for="races">Class</label>
                     <select class="select-css" id="races" type="text">
@@ -51,8 +73,10 @@
             </div>
 
             <div class="create" id="player2Create">
-                <label for="name2">Name</label>
-                <input id="name2" value="Player 2" type="text">
+                <div class="name_container">
+                    <label for="name2">Name
+                <input id="name2" value="Player 2" type="text"></label>
+                </div>
                 <div id="class_container2">
                     <label for="races2">Class</label>
                     <select class="select-css" id="races2" type="text">
@@ -85,7 +109,7 @@
                 <button id="heal">Heal</button>
             </div>
             <div id="console">
-                <p></p>
+                <ul id="console_message"></ul>
             </div>
 
             <div id="stat_player2"></div>

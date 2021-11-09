@@ -2,6 +2,7 @@
 @import 'playerSelect';
 @import 'responsive';
 @import 'titleMenu';
+@import'menusetting';
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
     position: relative;
@@ -21,10 +22,13 @@ body {
             color: rgb(20, 90, 71);
             transform: scale(1.1) translateY(-1%);
         }
-        input {
-            font-family: 'Press Start 2P', cursive;
-            background-color: transparent;
-        }
+    }
+    input,
+    select {
+        align-self: center;
+        width: 50%;
+        font-family: 'Press Start 2P', cursive;
+        background-color: transparent;
     }
     #popUpEnd {
         text-align: center;

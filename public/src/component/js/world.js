@@ -9,6 +9,7 @@ var p2ready = false
 var attacker = new Person()
 var defender = new Person()
 var backGround
+
 const gameTitle = document.getElementById("game_enter")
 const selectPlayer = document.getElementById("player_select")
 const main_game = document.getElementById("main_game")
@@ -23,6 +24,8 @@ const statPLayer2 = document.getElementById("stat_player2")
 const backgroundPreview = document.getElementById("background")
 const backgroundPreviewImg = document.getElementById("preview")
 const popUpEnd = document.getElementById("popUpEnd")
+const btnMenu = document.getElementById("settings")
+var valueBackground = "1"
     // audio = new Audio();
     // audio.src = "https://vgmsite.com/soundtracks/halo-infinite-set-a-fire-in-your-heart/njazlospea/01%20Set%20a%20Fire%20in%20Your%20Heart.mp3";
     /**
@@ -114,18 +117,46 @@ let createMenuSelect = () => {
         document.getElementById("item_container2").removeAttribute("style")
     })
 }
-let changeBackgroundPreview = (element, value) => {
-    element.style.backgroundImage = `url('./src/image/background/PNG/game_background_${value}/game_background_${value}.png')`
-    backGround = value
+let changeBackgroundPreview = (element, bgname) => {
+        element.style.backgroundImage = `url('./src/image/background/PNG/game_background_${bgname}/game_background_${bgname}.png')`
+        backGround = bgname
+    }
+    /*
+      hide functioon
+     */
+let hide = () => {
+
+        let menu = document.getElementById("menu_settings")
+        menu.style.display = "none"
+    }
+    /**
+         Is OPEN functioon
+        @returns {boolean} 
+        */
+let isopen = () => {
+    let menu = document.getElementById("menu_settings")
+    if (menu.style.display == "none") return false
+    else return true
 }
 
 
 
-window.addEventListener("load", () => {
 
+window.addEventListener("load", () => {
+    changeBackgroundPreview(backgroundPreviewImg, valueBackground)
+        /*
+    Open And Close settings pop up menu
+    */
+    btnMenu.addEventListener("click", () => {
+        if (!isopen()) {
+            let menu = document.getElementById("menu_settings")
+            menu.removeAttribute("style")
+        } else { hide() }
+    })
     document.getElementById("vsP2").addEventListener("click", createMenuSelect)
         //vs P2 mode
     addPlayer2Btn.addEventListener("click", () => {
+
         let hero_name = document.getElementById("name").value
         let hero_race = document.getElementById("races").value
         let hero_item = document.getElementById("item").value
@@ -144,9 +175,10 @@ window.addEventListener("load", () => {
             startBattle(hero, hero2)
         }
     })
+
     backgroundPreview.addEventListener("click", () => {
-        let value = backgroundPreview.value
-        changeBackgroundPreview(backgroundPreviewImg, value)
+        valueBackground = backgroundPreview.value
+        changeBackgroundPreview(backgroundPreviewImg, valueBackground)
     })
     addPlayerBtn.addEventListener("click", () => {
         let hero_name2 = document.getElementById("name2").value

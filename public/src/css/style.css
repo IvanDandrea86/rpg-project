@@ -63,8 +63,6 @@
 }
 
 #main_game .log_container {
-  -ms-flex-item-align: baseline;
-      align-self: baseline;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,6 +71,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #main_game .log_container #actionBox {
@@ -100,7 +100,7 @@
 #main_game .log_container #console {
   margin-left: 10px;
   margin-right: 10px;
-  width: 45%;
+  width: 50%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -108,6 +108,11 @@
   border: 2px solid black;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
+}
+
+#main_game .log_container #console li {
+  list-style: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");
+  margin: 15px;
 }
 
 #player_select {
@@ -127,18 +132,40 @@
           align-items: center;
 }
 
-#player_select #backgroundSelect {
-  width: 65%;
-  height: 15%;
+#player_select .bg_container {
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+  height: auto;
 }
 
-#player_select #backgroundSelect #preview {
+#player_select .bg_container #preview {
   margin-top: 15px;
   background-image: url("../image/background/PNG/game_background_1/game_background_1.png");
-  background-size: cover;
-  border: 1px solid red;
+  background-size: contain;
   width: 65%;
   height: 130px;
+}
+
+#player_select .bg_container select {
+  margin: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #player_select .players_container {
@@ -153,7 +180,8 @@
 }
 
 #player_select .create {
-  margin: 4vw;
+  padding: 1rem;
+  margin: 2vw;
   border: 2px solid black;
   border-radius: 12%;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
@@ -173,7 +201,15 @@
           align-items: center;
 }
 
-#player_select .create button {
+#player_select .create .name_container {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+}
+
+#player_select .create select {
+  margin: 15px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -189,6 +225,34 @@
 
 @media (min-width: 600px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .bg_container {
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 12%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 60%;
+    height: auto;
+  }
+  .bg_container #preview {
+    margin-top: 15px;
+    border-radius: 12%;
+    background-image: url("../image/background/PNG/game_background_1/game_background_1.png");
+    background-size: contain;
+    width: 80%;
+    height: 130px;
+  }
 }
 
 @media (min-width: 801px) {
@@ -232,6 +296,66 @@ header {
   text-align: center;
 }
 
+#game_enter > * li button:active {
+  -webkit-transform: translateY(-15px);
+          transform: translateY(-15px);
+}
+
+#game_enter h1 {
+  text-align: center;
+}
+
+#settings {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+}
+
+#settings:hover {
+  opacity: 0.6;
+}
+
+#settings:active {
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+#menu_settings {
+  position: fixed;
+  z-index: 5;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+#menu_settings #settings_table {
+  font-size: 14px;
+  line-height: 18px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  color: green;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+#menu_settings #settings_table td {
+  padding: 10px;
+}
+
+#menu_settings #settings_table input {
+  width: 2rem;
+}
+
 body {
   position: relative;
   background: radial-gradient(#16eda0, #145a47);
@@ -253,7 +377,12 @@ body button:hover {
           transform: scale(1.1) translateY(-1%);
 }
 
-body button input {
+body input,
+body select {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 50%;
   font-family: 'Press Start 2P', cursive;
   background-color: transparent;
 }
