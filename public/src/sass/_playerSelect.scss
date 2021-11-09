@@ -1,25 +1,37 @@
-#player_select{
+#player_select {
     height: 100vh;
     display: flex;
-    justify-content: center;   
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-        .create{margin: 4vw;
-            border:2px solid black;
-            border-radius: 12%;
-            box-shadow: 5.5px 5.5px darkslategrey;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            input{
-                width: 50%;
-            }
-            select{
-                width: fit-content;
-            }
-            button{
-                width: fit-content;
-            }
-            
+    #backgroundSelect {
+        width: 65%;
+        height: 15%;
+        #preview {
+            margin-top: 15px;
+            background-image: url('../image/background/PNG/game_background_1/game_background_1.png');
+            background-size: cover;
+            border: 1px solid red;
+            width: 65%;
+            height: 130px;
         }
     }
+    .players_container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .create {
+        margin: 4vw;
+        border: 2px solid black;
+        border-radius: 12%;
+        box-shadow: 5.5px 5.5px darkslategrey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button {
+            width: fit-content;
+        }
+    }
+}

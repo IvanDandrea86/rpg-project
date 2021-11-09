@@ -1,69 +1,66 @@
-#main_game{
+#main_game {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    #backGroundContainer{
-       
+    #backGroundContainer {
         position: relative;
         width: 380px;
         height: 216px;
         justify-content: space-between;
         background-size: contain;
         background-repeat: no-repeat;
-        border:5px solid black;
+        border: 5px solid black;
         border-radius: 6%;
         box-shadow: 5.5px 5.5px darkslategrey;
-        .player_one_container{ //Player 1
-            position:absolute;
+        .player_one_container {
+            //Player 1
+            position: absolute;
             top: 15px;
             left: 5px;
             width: fit-content;
-            img{
-                width: 240px; 
+            img {
+                width: 240px;
                 align-self: baseline;
             }
-            }
-        .player_two_container{ //Player 2
+        }
+        .player_two_container {
+            //Player 2
             position: absolute;
             top: 15px;
             right: -5%;
-            border :1px solid red;
+            border: 1px solid red;
             width: fit-content;
-            img{
-                width:240px ;
+            img {
+                width: 240px;
                 transform: rotateY(180deg);
             }
         }
     }
-    .log_container{
-        align-self:baseline;
+    .log_container {
+        align-self: baseline;
         padding: 15px;
         display: flex;
         justify-content: center;
         width: 100%;
-        #actionBox{
-            width: 30%;
+        #actionBox {
+            width: fit-content;
             height: fit-content;
             display: flex;
             align-items: center;
             flex-direction: column;
-            border:2px solid black;
+            border: 2px solid black;
             box-shadow: 5.5px 5.5px darkslategrey;
-        
         }
-        #console{
+        #console {
             margin-left: 10px;
             margin-right: 10px;
             width: 45%;
             height: fit-content;
-            max-height: 50%;
-          
-            border:2px solid black;
+            max-height: 100%;
+            border: 2px solid black;
             box-shadow: 5.5px 5.5px darkslategrey;
-            
-
         }
     }
 }

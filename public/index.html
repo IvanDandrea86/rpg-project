@@ -11,83 +11,96 @@
 </head>
 
 <body>
-   
+
     <header>
         <button>Settings</button></header>
-    <div id="game_enter" >
-        <h1>Game Title</h1> 
+    <div id="game_enter">
+        <h1>Game Title</h1>
         <ul>
-                <li><button id="vsP2">1P vs 2P</button></li>
-                <li><button id="vsCPU"disabled>1P vs CPU</button></li>
-            </ul>
-    </div> 
-    <div id="player_select"style="display: none;">
-        <div class="create" id="player1Create">
-            <label for="name">Name</label>
-            <input id="name" value="Player 1"type="text">
-            <label for="races">Class</label>
-            <select id="races" type="text">
-                </select>
-            <label for="item">Item</label>
-            <select id="item" type="text">
-            </select>
-            <button id="add_player1">Add Player 1</button>
-        </div>
-        <di class="create" id="backgroundSelect">
-            <label for="background">Arena</label>
-            <select name="" id="background">
-                <option value="The valley"></option>
-                <option value="The Castel"></option>
-                <option value="The Forest"></option>
-            </select>
-        </di>
-        <div class="create" id="player2Create">
-            <label for="name2">Name</label>
-            <input id="name2"value="Player 2" type="text">
-            <label for="races2">Class</label>
-            <select id="races2" type="text">
-                </select>
-            <label for="item2">Item</label>
-            <select id="item2" type="text">
-            </select>
-            <button id="add_player2">Add Player 2</button>
-        </div>
-       
-    
+            <li><button id="vsP2">1P vs 2P</button></li>
+            <li><button id="vsCPU" disabled>1P vs CPU</button></li>
+        </ul>
     </div>
-       <div id="main_game"style="display: none;">
-       <div id="backGroundContainer">
-            <div class="player_one_container">
-                 <img class="hero_img" id="player1_img"  alt="">
+    <!-- Player Select Section -->
+    <div id="player_select" style="display: none;">
+        <div class="create" id="backgroundSelect">
+            <div id="preview"></div>
+            <label for="background">Arena</label>
+            <select class="select-css" name="" id="background">
+                <option value="1">The Orc Camp</option>
+                <option value="2">The Castel</option>
+                <option value="3">Sky City</option>
+                <option value="4">The Village</option>
+            </select>
+        </div>
+        <div class="players_container">
+            <div class="create" id="player1Create">
+                <label for="name">Name</label>
+                <input id="name" value="Player 1" type="text">
+                <div id="class_container">
+                    <label for="races">Class</label>
+                    <select class="select-css" id="races" type="text">
+                    </select>
+                </div>
+                <div id="item_container" style="display:none;">
+                    <label for="item">Item</label>
+                    <select class="select-css" id="item" type="text">
+                    </select>
+                </div>
+                <button id="add_player1">Add Player 1</button>
             </div>
-            <div class="player_two_container">
-                <img class="hero_img" id="player2_img" alt="">
+
+            <div class="create" id="player2Create">
+                <label for="name2">Name</label>
+                <input id="name2" value="Player 2" type="text">
+                <div id="class_container2">
+                    <label for="races2">Class</label>
+                    <select class="select-css" id="races2" type="text">
+                    </select>
+                </div>
+                <div id="item_container2" style="display:none;">
+                    <label for="item2">Item</label>
+                    <select class="select-css " id="item2" type="text ">
+                    </select>
+                </div>
+                <button id="add_player2">Add Player 2</button>
             </div>
-        </div>
-        
-        <div class="log_container">  
-         <div id="stat_player1"></div>         
-        <div class="action" id="actionBox"style="">
-                <button id="attack">Attack</button>
-                <button id="heal">Heal</button>
-        </div>
-        <div id="console"><p></p></div>
-        <!-- <div class="action" id="actionBox2"style="">
-                <button id="attack2">Attack</button>
-                <button id="heal2">Heal</button>
-        </div> -->
-        <div id="stat_player2"></div>
-        </div>
         </div>
 
-   
-  
-    <script src="./src/component/js/animate.js"></script>
+    </div>
+    <div id="main_game" style="display: none;">
+        <div id="backGroundContainer">
+            <div class="player_one_container">
+                <img class="hero_img " id="player1_img" alt=" ">
+            </div>
+            <div class="player_two_container">
+                <img class="hero_img " id="player2_img" alt=" ">
+            </div>
+        </div>
+
+        <div class="log_container">
+            <div id="stat_player1"></div>
+            <div class="action" id="actionBox">
+                <button id="attack">Attack</button>
+                <button id="heal">Heal</button>
+            </div>
+            <div id="console">
+                <p></p>
+            </div>
+
+            <div id="stat_player2"></div>
+        </div>
+    </div>
+    <p id="popUpEnd" style="display:none; ">Game Over</p>
+
+
+
+    <script src="./src/component/js/animate.js "></script>
     <script src="./src/component/js/character.js "></script>
-    <script src="./src/component/js/gamelogic.js"></script>
-    <script src="./src/component/js/world.js"></script>
-    <script src="./src/component/js/classrules.js"></script>
-    <script src="./src/component/js/game.js"></script>
+    <script src="./src/component/js/gamelogic.js "></script>
+    <script src="./src/component/js/world.js "></script>
+    <script src="./src/component/js/classrules.js "></script>
+    <script src="./src/component/js/game.js "></script>
 </body>
 
 </html>
