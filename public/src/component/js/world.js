@@ -3,6 +3,7 @@ var gameEnd = false
 var hero = new Person()
 var hero2 = new Person()
 
+
 var model, model2
 var p1ready = false
 var p2ready = false
@@ -27,6 +28,17 @@ const popUpEnd = document.getElementById("popUpEnd")
 const btnMenu = document.getElementById("settings")
 const console_status = document.getElementById("console_action")
 const console_action = document.getElementById("console")
+const stat = document.getElementById("player1_stats")
+const stat_1 = document.getElementById("player2_stats")
+const startBtn = document.getElementById("start_button")
+let control = () => {
+
+    if (p1ready == true && p2ready == true) {
+        // audio.pause()
+
+        startBtn.removeAttribute("style")
+    }
+}
 var valueBackground = "1"
     // audio = new Audio();
     // audio.src = "https://vgmsite.com/soundtracks/halo-infinite-set-a-fire-in-your-heart/njazlospea/01%20Set%20a%20Fire%20in%20Your%20Heart.mp3";
@@ -83,6 +95,10 @@ let startBattle = (obj, obj1) => {
 
     writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
     setBackGroundImg(backGround)
+    drawStat(stat, hero)
+    drawStat(stat_1, hero2)
+
+
     animateImg(player1_img, obj.race, "IDLE", model, timer1)
     animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
     attacker = selectFirstPlayerTurn(hero, hero2)
@@ -151,10 +167,13 @@ window.addEventListener("load", () => {
             menu.removeAttribute("style")
         } else { hide() }
     })
-    document.getElementById("vsP2").addEventListener("click", createMenuSelect)
+    document.getElementById("vsP2").addEventListener("click", () => {
+            createMenuSelect()
+
+        })
         //vs P2 mode
     addPlayer2Btn.addEventListener("click", () => {
-
+        // 
         let hero_name = document.getElementById("name").value
         let hero_race = document.getElementById("races").value
         let hero_item = document.getElementById("item").value
@@ -162,18 +181,13 @@ window.addEventListener("load", () => {
         hero.race = hero_race
         hero.item = hero_item
         updateRace(hero, url_class)
-            // hero= updateItem(hero, url_item)
+        updateItem(hero, url_item)
         model = selectModel(hero_race, hero_item)
         model = model.toString()
         addPlayer2Btn.disabled = true
         p1ready = true
-
-        if (p1ready == true && p2ready == true) {
-            // audio.pause()
-            startBattle(hero, hero2)
-        }
+        control()
     })
-
     backgroundPreview.addEventListener("click", () => {
         valueBackground = backgroundPreview.value
         changeBackgroundPreview(backgroundPreviewImg, valueBackground)
@@ -192,18 +206,14 @@ window.addEventListener("load", () => {
         model2 = model2.toString()
         addPlayerBtn.disabled = true
         p2ready = true
-        if (p1ready == true && p2ready == true) {
-            // audio.pause()
-            startBattle(hero, hero2)
-        }
+        control()
+    })
+    startBtn.addEventListener("click", () => {
+        startBattle(hero, hero2)
     })
 
 
 })
-
-
-
-
 
 document.getElementById("vsCPU").addEventListener("click", () => {
     //vs CPU mode

@@ -12,19 +12,20 @@ const dataFetchAsync = async(target) => {
     }
     /**
      * Update Item
-     * @param {Person} onj - object Person 
+     * @param {Person} person - object Person 
      * @param {String} url - url json
      * @returns {Person}
      */
-let updateItem = (obj, url) => {
+let updateItem = (person, url) => {
         dataFetchAsync(url)
             .then(data => {
                 data.items.forEach(elem => {
-                    if (elem.name == obj.item) {
-                        obj[elem.power] += elem.value
+                    if (elem.name == person.item) {
+                        person[elem.power] = person[elem.power] + elem.value
+                        return person
                     }
                 })
-                return obj
+
             })
 
     }
@@ -40,11 +41,12 @@ let updateRace = (person, url) => {
             let datas = data.race
             datas.forEach(elem => {
                 if (elem.name == person.race) {
-                    person[elem.power] += elem.value
+                    person[elem.power] = person[elem.power] + elem.value
                     if (elem.name == "Orc") {
                         person['maxHealth'] = person['maxHealth'] * (1 + (person['bonusHealth']))
                         person['currenthealth'] = person['maxHealth']
                     }
+                    return person
                 }
             });
 
@@ -114,12 +116,19 @@ const abilitychance = (ability) => { return (Math.random() < ability) }
 let damageCalculation = (attacker, defender) => {
 
         let lifesteal = (attacker.lifeSteal) * (defender.currenthealth)
-        let x = attacker.damage()
-        console.log(x)
-        let totdmg = x + lifesteal
+        let dmg = attacker.damage()
+
+        let totdmg = dmg + lifesteal
         if (abilitychance(attacker.doubleAttack) == true) { //double attack calculator
             writeOnConsole(`${attacker.heroName} made a double attack`, console_action)
             totdmg = totdmg * 2
+        }
+        if (attacker.lifeSteal != 0) {
+            attacker.currenthealth += lifesteal
+            writeOnConsole(`${attacker.heroName} steal ${lifesteal} lifepoints`, console_action);
+            if (attacker.currenthealth > attacker.maxHealth) {
+                attacker.currenthealth = attacker.maxHealth
+            }
         }
         if (abilitychance(defender.dogeChance) == true) { //double attack calculator
             writeOnConsole(`${defender.heroName} doge the attack`, console_action)
@@ -150,20 +159,24 @@ let checkLifeline = (attacker, defender) => {
         return true
     }
 }
-let drawStat = (htmlElem, obj) => {
-    const attributeList = ["heroName", "currenthealth", "extraDmg", "doubleAttack", "healingPower", "dogeChance", "preventDmg", "preventDmg"]
-    let list = document.createElement("ul")
-    for (var propriety in obj) {
-        for (let i = 0; i < attributeList.length; i++) {
-            if (attributeList[i] == propriety) {
-                let elem = document.createElement("li")
-                elem.innerHTML = `${propriety}: ${obj[propriety]}`
-                list.append(elem)
-            }
+let drawStat = (htmlElem, person) => {
+    const attributeList = ["heroName", "currenthealth", "extraDmg", "doubleAttack", "healingPower", "dogeChance", "preventDmg", "lifeSteal"]
+
+    for (let i = 0; i < attributeList.length; i++) {
+        if (person[attributeList[i]] != 0) {
+            let row = document.createElement("tr")
+            let data = document.createElement("td")
+            let namedata = document.createElement("td")
+            data.innerHTML = person[attributeList[i]]
+            namedata.innerHTML = attributeList[i]
+            row.append(namedata)
+            row.append(data)
+
+            htmlElem.append(row)
         }
     }
-    htmlElem.append(list)
 }
+
 let writeOnConsole = (string, parentNode) => {
     let message = document.createElement("li")
     message.innerHTML = string
