@@ -1,5 +1,5 @@
 
-let randomRaceBot=(obj)=>{
+let randomRaceBot=(obj,obj2)=>{
     var races_list=new Array()
         dataFetchAsync(url_class)
         .then(data=>{
@@ -87,12 +87,15 @@ let randomRaceBot=(obj)=>{
             console.log(model2)
             updateRace(obj, url_class)
             updateItem(obj, url_item)
+           
+            updateRace(obj2, url_class)
+            updateItem(obj2, url_item)
+        
         })      
 }
-
-let createBot=(obj)=>{
+let createBot=(obj,obj2)=>{
     obj.heroName="Bot Warrior"
-    randomRaceBot(obj)
+    randomRaceBot(obj,obj2)
 }
 let startBattleBot = (obj, obj1) => {
     let player1_img = document.getElementById("player1_img")
@@ -128,18 +131,19 @@ let botAction=(obj,obj1)=>{
         obj = obj1
         obj1 = temp
     }else{
-        let y = obj.heal()
+        obj.heal()
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
         let temp = obj
         obj = obj1
         obj1 = temp
-    }
-  
+    }  
 }
+const attBtn= document.getElementById("attack")
+const healBtn= document.getElementById("heal")
 let takeActionVsBot = (obj, obj1) => {
-    document.getElementById("attack").addEventListener("click", () => {
+    attBtn.addEventListener("click", () => {
         hit.play()
         setTimeout(()=>{hurt.play()},500)
         damageCalculation(obj, obj1)
@@ -155,19 +159,26 @@ let takeActionVsBot = (obj, obj1) => {
         obj = obj1
         obj1 = temp
         writeOnConsole(`${obj.heroName} turn`, console_status)
+        attBtn.style.display="none"
+        healBtn.style.display="none"
         setTimeout(()=>{
-            botAction(obj,obj1)},2000)
+            botAction(obj,obj1)
+            attBtn.removeAttribute("style")
+            healBtn.removeAttribute("style")},2000)
     })
-    document.getElementById("heal").addEventListener("click", () => {
-        let y = obj.heal()
+        healBtn.addEventListener("click", () => {
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
         let temp = obj
         obj = obj1
         obj1 = temp
+        attBtn.style.display="none"
+        healBtn.style.display="none"
         writeOnConsole(` ${obj.heroName} turn`, console_status)
         setTimeout(()=>{
-            botAction(obj,obj1)},2000)
+            botAction(obj,obj1)
+            attBtn.removeAttribute("style")
+            healBtn.removeAttribute("style")},2000)
     })
 }

@@ -122,7 +122,7 @@ let damageCalculation = (attacker, defender) => {
         }
         if (attacker.lifeSteal != 0) {
             attacker.currenthealth += lifesteal
-            writeOnConsole(`${attacker.heroName} steal ${lifesteal} lifepoints`, console_action);
+            writeOnConsole(`${attacker.heroName} steal ${Number(lifesteal.toFixed(1))} lifepoints`, console_action);
             if (attacker.currenthealth > attacker.maxHealth) {
                 attacker.currenthealth = attacker.maxHealth
             }
@@ -143,12 +143,12 @@ let damageCalculation = (attacker, defender) => {
                 totdmg=totdmg-prevent
                 defender.currenthealth = defender.currenthealth - totdmg
                 writeOnConsole(`${defender.heroName} prevent ${prevent} of damage\n`,console_action)
-                writeOnConsole(` ${defender.heroName} has now ${defender.currenthealth}`, console_action)  
+                writeOnConsole(` ${defender.heroName} has now ${Number(defender.currenthealth).toFixed(1)}`, console_action)  
             }
             else{
             defender.currenthealth = defender.currenthealth - totdmg
             writeOnConsole(`${attacker.heroName} successfully attacked and deals ${totdmg}.\n
-                            ${defender.heroName} has now ${defender.currenthealth}`, console_action)
+                            ${defender.heroName} has now ${Number(defender.currenthealth).toFixed(1)}`, console_action)
         }
     }
     }

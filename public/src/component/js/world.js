@@ -40,6 +40,9 @@ const console_action = document.getElementById("console")
 const stat = document.getElementById("player1_stats")
 const stat_1 = document.getElementById("player2_stats")
 const startBtn = document.getElementById("start_button")
+const btnReset =document.getElementById("reset")
+const sfxBtn =document.getElementById  ("sfx")
+const musicBtn=document.getElementById("music")
 let control = () => {
 
     if (p1ready == true && p2ready == true) {
@@ -194,6 +197,7 @@ let isopen = () => {
     /*
 Open And Close settings pop up menu
 */
+
 btnMenu.addEventListener("click", () => {
     if (!isopen()) {
         let menu = document.getElementById("menu_settings")
@@ -203,15 +207,26 @@ btnMenu.addEventListener("click", () => {
 
 
 //Start Audio
-audioIntro.play()
+
+
 window.addEventListener("load", () => {
-  changeBackgroundPreview(backgroundPreviewImg, valueBackground)
+    btnReset.addEventListener("click",()=>{})
+    sfxBtn.addEventListener("change",()=>{
+        click.volume=0
+        hit.volume=0
+        console.log("fdkifjd")
+    hurt.volume=0})
+    musicBtn.addEventListener("change",()=>{audioIntro.pause()})
+    changeBackgroundPreview(backgroundPreviewImg, valueBackground)
   document.getElementById("vsP2").addEventListener("click", () => {
+    audioIntro.play()
     createMenuSelect()
 
     
         //vs P2 mode
     addPlayer2Btn.addEventListener("click", () => {
+        
+        
         
         let hero_name = document.getElementById("name").value
         let hero_race = document.getElementById("races").value
@@ -256,7 +271,7 @@ window.addEventListener("load", () => {
     document.getElementById("vsCPU").addEventListener("click", () => {
         //vs CPU mode
         createMenuBot()
-        createBot(hero2)
+        createBot(hero2,hero)
         console.log(hero2)
         addPlayer2Btn.addEventListener("click", () => {
         
@@ -266,8 +281,7 @@ window.addEventListener("load", () => {
             hero.heroName = hero_name
             hero.race = hero_race
             hero.item = hero_item
-            updateRace(hero, url_class)
-            updateItem(hero, url_item)
+            createBot(hero2,hero)
             model = selectModel(hero_race, hero_item)
             model = model.toString()
             addPlayer2Btn.disabled = true
