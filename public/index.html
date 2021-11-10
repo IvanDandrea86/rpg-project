@@ -38,7 +38,7 @@
         <h1>Battle Realms</h1>
         <ul>
             <li><button id="vsP2">1P vs 2P</button></li>
-            <li><button id="vsCPU" disabled>1P vs CPU</button></li>
+            <li><button id="vsCPU">1P vs CPU</button></li>
         </ul>
     </div>
     <!-- Player Select Section -->
@@ -68,7 +68,6 @@
                 <div id="item_container" style="display:none;">
                     <label for="item">Item</label>
                     <select class="select-css" id="item" type="text">
-                        
                     </select>
                 </div>
                 <button id="add_player1">Add Player 1</button>
@@ -93,21 +92,19 @@
                 <button id="add_player2">Add Player 2</button>
             </div>
         </div>
-        <button id="start_button">GameStart</button>
+        <button id="start_button"style="display:none;">GameStart</button>
     </div>
     <div id="main_game" style="display: none;">
         <div id="turn_container">
             <ul id="console_action"></ul>
         </div>
         <div class="row">
-            <div id="player1_stats">
-                <table>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+            <div >
+                <table id="player1_stats"></table>
             </div>
+            <div class="healthbar" id="player1_health">
+                <strong class="bar" style='height:100%;'></strong>
+              </div>
             <div id="backGroundContainer">
                 <div class="player_one_container">
                     <img class="hero_img " id="player1_img" alt=" ">
@@ -116,7 +113,12 @@
                     <img class="hero_img " id="player2_img" alt=" ">
                 </div>
             </div>
-            <div id="player2_stats"></div>
+            <div class="healthbar" id="player2_health">
+                <strong class="bar" style='height:100%;'></strong>
+              </div>
+            <div >
+                <table id="player2_stats"></table>
+            </div>
         </div>
 
         <div class="log_container">
@@ -128,11 +130,11 @@
             <div id="console">
                 <ul id="console_message"></ul>
             </div>
-
-            <div id="stat_player2"></div>
+            
         </div>
+        <p id="popUpEnd" style="display:none; ">Game Over</p>
     </div>
-    <p id="popUpEnd" style="display:none; ">Game Over</p>
+  
 
 
 
@@ -141,7 +143,7 @@
     <script src="./src/component/js/gamelogic.js "></script>
     <script src="./src/component/js/world.js "></script>
     <script src="./src/component/js/classrules.js "></script>
-    <script src="./src/component/js/game.js "></script>
+    <script src="./src/component/js/bot.js "></script>
 </body>
 
 </html>

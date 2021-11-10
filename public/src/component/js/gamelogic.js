@@ -22,12 +22,9 @@ let updateItem = (person, url) => {
                 data.items.forEach(elem => {
                     if (elem.name == person.item) {
                         person[elem.power] = person[elem.power] + elem.value
-                        return person
                     }
                 })
-
             })
-
     }
     /**
      * Update Race
@@ -46,7 +43,6 @@ let updateRace = (person, url) => {
                         person['maxHealth'] = person['maxHealth'] * (1 + (person['bonusHealth']))
                         person['currenthealth'] = person['maxHealth']
                     }
-                    return person
                 }
             });
 
@@ -119,6 +115,7 @@ let damageCalculation = (attacker, defender) => {
         let dmg = attacker.damage()
 
         let totdmg = dmg + lifesteal
+        totdmg=Number(totdmg.toFixed(1))
         if (abilitychance(attacker.doubleAttack) == true) { //double attack calculator
             writeOnConsole(`${attacker.heroName} made a double attack`, console_action)
             totdmg = totdmg * 2
@@ -132,16 +129,28 @@ let damageCalculation = (attacker, defender) => {
         }
         if (abilitychance(defender.dogeChance) == true) { //double attack calculator
             writeOnConsole(`${defender.heroName} doge the attack`, console_action)
-        } else if (abilitychance(defender.preventDmg) == true) { //double attack calculator
-            writeOnConsole(`${defender.heroName} prevent the attack`, console_action)
+        // } else if (abilitychance(defender.preventDmg) == true) { //double attack calculator
+        //     writeOnConsole(`${defender.heroName} prevent the attack`, console_action)
         } else if (abilitychance(defender.deflectDmg) == true) { //double attack calculator
             writeOnConsole(`${defender.heroName} deflect the attack and deals ${totdmg}`, console_action)
             attacker.currenthealth = attacker.currenthealth - totdmg
         } else {
+            if(defender.preventDmg>0){
+                let prevent= totdmg*defender.preventDmg
+                prevent=Number(prevent).toFixed(1)
+                console.log(prevent)
+                writeOnConsole(`${attacker.heroName} successfully attacked and deals ${totdmg}.\n`,console_action)
+                totdmg=totdmg-prevent
+                defender.currenthealth = defender.currenthealth - totdmg
+                writeOnConsole(`${defender.heroName} prevent ${prevent} of damage\n`,console_action)
+                writeOnConsole(` ${defender.heroName} has now ${defender.currenthealth}`, console_action)  
+            }
+            else{
             defender.currenthealth = defender.currenthealth - totdmg
             writeOnConsole(`${attacker.heroName} successfully attacked and deals ${totdmg}.\n
                             ${defender.heroName} has now ${defender.currenthealth}`, console_action)
         }
+    }
     }
     /**
      * 
@@ -151,7 +160,6 @@ let damageCalculation = (attacker, defender) => {
 let checkLifeline = (attacker, defender) => {
     if (defender.currenthealth <= 0) {
         writeOnConsole(`${defender.heroName} is dead`, console_status)
-
         return true
     }
     if (attacker.currenthealth <= 0) {
@@ -160,23 +168,23 @@ let checkLifeline = (attacker, defender) => {
     }
 }
 let drawStat = (htmlElem, person) => {
-    const attributeList = ["heroName", "currenthealth", "extraDmg", "doubleAttack", "healingPower", "dogeChance", "preventDmg", "lifeSteal"]
-
+    const attributeList = [ "extraDmg", "doubleAttack", "healingPower", "dogeChance", "preventDmg", "lifeSteal"]
+    let playerName=document.createElement("th")
+    playerName.innerHTML=(person.heroName)
+    htmlElem.append(playerName)
     for (let i = 0; i < attributeList.length; i++) {
         if (person[attributeList[i]] != 0) {
             let row = document.createElement("tr")
             let data = document.createElement("td")
             let namedata = document.createElement("td")
-            data.innerHTML = person[attributeList[i]]
+            data.innerHTML = `${person[attributeList[i]]*100}%`
             namedata.innerHTML = attributeList[i]
             row.append(namedata)
             row.append(data)
-
             htmlElem.append(row)
         }
     }
 }
-
 let writeOnConsole = (string, parentNode) => {
     let message = document.createElement("li")
     message.innerHTML = string
@@ -185,5 +193,9 @@ let writeOnConsole = (string, parentNode) => {
     if (childnode_array > 1) {
         parentNode.removeChild(parentNode.childNodes[0])
     }
-
+}
+let updateHealthBar=(obj)=>{
+    let htmlElem= document.querySelector(`#${obj.heroName.replace(" ","")}_health .bar`)
+    let healt_percent= (obj.currenthealth/obj.maxHealth)*100
+    htmlElem.style.height = `${healt_percent}%`
 }

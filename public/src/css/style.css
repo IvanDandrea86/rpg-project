@@ -29,6 +29,26 @@
       justify-content: space-around;
 }
 
+#main_game .row .healthbar {
+  border-radius: 25%;
+  width: 24px;
+  height: 80%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+#main_game .row .healthbar .bar {
+  width: 100%;
+  display: block;
+  font-family: arial;
+  font: size 6px;
+  background-color: red;
+  color: black;
+  position: absolute;
+  bottom: 0;
+}
+
 #main_game #backGroundContainer {
   position: relative;
   width: 345px;
@@ -129,6 +149,16 @@
 #main_game .log_container #turn_container li {
   list-style: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");
   margin: 15px;
+}
+
+th {
+  margin: 5px;
+  border: 1px solid black;
+}
+
+td {
+  margin: 15px;
+  border: 1px solid black;
 }
 
 #player_select {

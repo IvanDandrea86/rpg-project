@@ -12,22 +12,22 @@ function Person(heroName, race, item) {
         this.min = 3;
         this.maxDamage = 20;
         this.extraDmg = 0
-        this.doubleAttack = 0.05;
+        this.doubleAttack = 0;
         this.lifeSteal = 0;
         //mana stats
         this.mana = 60;
         //healing stats
         this.maxHealing = 30;
-        this.healingPower = 0.05;
+        this.healingPower = 0;
         //defending stas
-        this.dogeChance = 0.05;
-        this.preventDmg = 0.05;
-        this.deflectDmg = 0.05;
+        this.dogeChance = 0;
+        this.preventDmg = 0;
+        this.deflectDmg = 0;
     }
 
     this.heal = () => {
         if (this.currenthealth < this.maxHealth) {
-            let heal = (Math.floor(Math.random() * (this.maxHealth - this.min + 1) + this.min))
+            let heal = (Math.floor(Math.random() * (this.maxHealing - this.min + 1) + this.min))
             this.currenthealth += heal
             writeOnConsole(`${this.heroName} heal ${heal} lifepoints`, console_action);
             if (this.currenthealth > this.maxHealth) {
