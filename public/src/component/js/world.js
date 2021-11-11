@@ -8,6 +8,8 @@ var p2ready = false
 var attacker = new Person()
 var defender = new Person()
 var backGround
+var Interval1
+var Interval2
 //Audio
 
 const audioIntro = new Audio();
@@ -83,23 +85,42 @@ let endGame = () => {
  * @param {Person} obj1 -defender
  */
 let takeAction = (obj, obj1) => {
+        
+         Interval1=setInterval(() => {
+        SetAnimationImg(player1_img, obj.race, "IDLE", model)
+        }, 100);    
+        Interval2 =setInterval(()=>{ 
+        SetAnimationImg(player2_img, obj1.race, "IDLE", model2)
+        },100)
+
     attBtn.addEventListener("click", () => {
         hit.play()
-        setTimeout(()=>{hurt.play()},500)
+        clearInterval(Interval1)
+        ChangeAnimationImg(player1_img, obj.race, "ATTACK", model)
+        setTimeout(()=>{
+            clearInterval(Interval2)
+            ChangeAnimationImg(player2_img, obj1.race, "HURT", model2)  
+            hurt.play()
+            let temp = obj
+            obj = obj1
+            obj1 = temp
+            let temp1 = player1_img
+            player1_img= player2_img
+            player2_img = temp1
+            let temp3 = model
+            model= model2
+            model2 = temp3
+            writeOnConsole(`${obj.heroName} turn`, console_status)   
+        },500)
         damageCalculation(obj, obj1)
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
-        
         if (gameEnd) {
             endGame()
             return
         }
-        //switch
-        let temp = obj
-        obj = obj1
-        obj1 = temp
-        writeOnConsole(`${obj.heroName} turn`, console_status)
+        //switch      
     })
    healBtn.addEventListener("click", () => {
        obj.heal()
@@ -132,8 +153,7 @@ let startBattle = (obj, obj1) => {
     drawStat(stat_1, hero2)
 
 
-    animateImg(player1_img, obj.race, "IDLE", model, timer1)
-    animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
+    
     attacker = selectFirstPlayerTurn(hero, hero2)
     writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {

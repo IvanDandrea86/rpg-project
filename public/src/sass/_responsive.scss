@@ -1,32 +1,16 @@
     @media (min-width:320px) {
         /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+
     }
     
     @media (min-width:480px) {
         /* smartphones, Android phones, landscape iPhone */
+    
     }
     
     @media (min-width:600px) {
         /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-        .bg_container {
-            padding: 1rem;
-            border: 2px solid black;
-            border-radius: 12%;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            width: 60%;
-            height: auto;
-            #preview {
-                margin-top: 15px;
-                border-radius: 12%;
-                background-image: url('../image/background/PNG/game_background_1/game_background_1.png');
-                background-size: contain;
-                width: 80%;
-                height: 130px;
-            }
-        }
+      
     }
     
     @media (min-width:801px) {

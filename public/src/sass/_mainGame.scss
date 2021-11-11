@@ -8,17 +8,18 @@
         margin-bottom: 2rem;
         li{
         text-align: center;
+        margin-bottom: 15px;
     }
 }
     .row {
-        width: 80%;
+        width: fit-content;
+        height:30vh;
         display: flex;
         flex-direction: row;
         justify-content: center;
         .healthbar{
             border-radius: 25%;
-            width:24px    ;
-            height:80%;
+            width: 24px;
             background-color:#fff;
             border:1px solid #ccc;
             position:relative; 
@@ -37,11 +38,11 @@
     }
     #backGroundContainer {
         position: relative;
-        width: 345px;
-        height: 198px;
+        width:60vw;    ;
+        height:80%;
         justify-content: space-between;
         background-size: contain;
-        background-repeat: no-repeat;
+       
         background-position: center;
         border: 5px solid black;
         border-radius: 6%;
@@ -49,24 +50,22 @@
         .player_one_container {
             //Player 1
             position: absolute;
-            top: 15px;
-            left: 5px;
-            width: fit-content;
-            img {
-                width: 210px;
-                align-self: baseline;
-            }
+            top: 0%;
+            left: 10%;
+            width: 15rem;
+           
         }
         .player_two_container {
             //Player 2
             position: absolute;
-            top: 15px;
-            right: -5%;
-            width: fit-content;
-            img {
-                width: 210px;
+            top: 0%;
+            right: 10%;
+            width: 15rem;
+           
+            
+               
                 transform: rotateY(180deg);
-            }
+            
         }
     }
     .log_container {
@@ -75,9 +74,11 @@
         display: flex;
         justify-content: center;
         width: 100%;
+        height: 25vh;
         flex-wrap: wrap;
         #actionBox {
             background:radial-gradient(rgba(22, 237, 160, 0.52), rgb(20, 90, 71));
+            font-size: 1rem;
             width: fit-content;
             height: fit-content;
             display: flex;
@@ -85,6 +86,12 @@
             flex-direction: column;
             border: 2px solid black;
             box-shadow: 5.5px 5.5px darkslategrey;
+            button{
+                font-size: 1rem; 
+                img{
+                    height: 1rem;
+                }
+            }
         }
         #console,
         #turn_container {

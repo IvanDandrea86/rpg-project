@@ -106,7 +106,17 @@ let botAction=(obj,obj1)=>{
     console.log(random_action)
     if (random_action==1){
         hit.play()
-        setTimeout(()=>{hurt.play()},500)
+        clearInterval(Interval1)
+        ChangeAnimationImg(player1_img, obj.race, "ATTACK", model)
+        setTimeout(()=>{
+            clearInterval(Interval2)
+            ChangeAnimationImg(player2_img, obj1.race, "HURT", model2)  
+            hurt.play()
+            let temp = obj
+            obj = obj1
+            obj1 = temp
+            writeOnConsole(` ${obj.heroName} turn`, console_status)
+            },500)
         damageCalculation(obj, obj1)
         updateHealthBar(obj)
         updateHealthBar(obj1)
@@ -116,6 +126,7 @@ let botAction=(obj,obj1)=>{
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
+        
     }  
 }
 /**
@@ -124,9 +135,31 @@ let botAction=(obj,obj1)=>{
  * @param {Person} obj1 - Object person
  */
 let takeActionVsBot = (obj, obj1) => {
+    Interval1=setInterval(() => {
+        SetAnimationImg(player1_img, obj.race, "IDLE", model)
+        }, 100);    
+        Interval2 =setInterval(()=>{ 
+        SetAnimationImg(player2_img, obj1.race, "IDLE", model2)
+        },100)
     attBtn.addEventListener("click", () => {
         hit.play()
-        setTimeout(()=>{hurt.play()},500)
+        clearInterval(Interval1)
+        ChangeAnimationImg(player1_img, obj.race, "ATTACK", model)
+        setTimeout(()=>{
+            clearInterval(Interval2)
+            ChangeAnimationImg(player2_img, obj1.race, "HURT", model2)  
+            hurt.play()
+            let temp = obj
+            obj = obj1
+            obj1 = temp
+            let temp1 = player1_img
+            player1_img= player2_img
+            player2_img = temp1
+            let temp3 = model
+            model= model2
+            model2 = temp3
+            writeOnConsole(`${obj.heroName} turn`, console_status)   
+        },500)
         damageCalculation(obj, obj1)
         updateHealthBar(obj)
         updateHealthBar(obj1)
@@ -135,19 +168,13 @@ let takeActionVsBot = (obj, obj1) => {
             endGame()
             return
         }
-        //switch
-        let temp = obj
-        obj = obj1
-        obj1 = temp
         writeOnConsole(`${obj.heroName} turn`, console_status)
         attBtn.style.display="none"
         healBtn.style.display="none"
         setTimeout(()=>{
             botAction(obj,obj1)
-            let temp = obj
-            obj = obj1
-            obj1 = temp
-            writeOnConsole(` ${obj.heroName} turn`, console_status)
+            
+            
             attBtn.removeAttribute("style")
             healBtn.removeAttribute("style")},2000)
     })
@@ -189,8 +216,6 @@ let startBattleBot = (obj, obj1) => {
     main_game.removeAttribute("style")
     writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
     setBackGroundImg(backGround)
-    animateImg(player1_img, obj.race, "IDLE", model, timer1)
-    animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
     attacker = selectFirstPlayerTurn(hero, hero2)
     writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {

@@ -1,6 +1,5 @@
 var frame_counter=0
-var timer1
-var timer2
+
 /**
  * Slect Fighting Background 
  * @param {String} set 
@@ -17,34 +16,24 @@ let setBackGroundImg=(set)=>{
  * @param {String} color 
 * @param {Number} timer_animation
 */
-let animateImg=(elem,race,mode,color,timer_animation)=>{
-    timer_animation=setInterval(() => {
+let SetAnimationImg=(elem,race,mode,color)=>{
     const maxFrame=10  
     elem.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_0"+color+"__"+mode+"_00"+frame_counter+".png"
     frame_counter++
     if (frame_counter >= maxFrame){ 
         frame_counter=0   
     }
-}, 150);
 }
-/**
- * Change Animation
- * @param {HTMLElement} elem 
- * @param {String} race 
- * @param {String} mode 
- * @param {String} color 
-* @param {Number} timer_animation
-*/
-let changeAnimation=(elem,race,mode,color,timer_animation)=>{
-    clearInterval(timer_animation)
-    timer_animation=setInterval(() => {
-        const maxFrame=10  
-        elem.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_0"+color+"__"+mode+"_00"+frame_counter+".png"
-        frame_counter++
-        if (frame_counter >= maxFrame){ 
-            frame_counter=0  
-            clearInterval(timer_animation) 
-        }
-    }, 15);
+let ChangeAnimationImg=(elem,race,mode,color)=>{
+    let timer=setInterval(()=>{
+    const maxFrame=10  
+    elem.src="./src/image/"+race+"/_PNG/"+color+"/"+race+"_0"+color+"__"+mode+"_00"+frame_counter+".png"
+    frame_counter++
+    if (frame_counter >= maxFrame){ 
+        frame_counter=0   
+        clearInterval(timer)
+    }
+},50)
+}
 
-}
+
