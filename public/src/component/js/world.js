@@ -102,6 +102,7 @@ let takeAction = (obj, obj1) => {
         writeOnConsole(`${obj.heroName} turn`, console_status)
     })
    healBtn.addEventListener("click", () => {
+       obj.heal()
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
@@ -230,7 +231,6 @@ window.addEventListener("load", () => {
     sfxBtn.addEventListener("change",()=>{
     click.volume=0
     hit.volume=0
-    console.log("fdkifjd")
     hurt.volume=0})
     musicBtn.addEventListener("change",()=>{audioIntro.pause()})
     changeBackgroundPreview(backgroundPreviewImg, valueBackground)
@@ -299,7 +299,6 @@ window.addEventListener("load", () => {
             model = model.toString()
             addPlayer2Btn.disabled = true
             p1ready = true
-            console.log(hero[0])
             if (p1ready){
                //sTART VS bOT
                 startBattleBot(hero, hero2)

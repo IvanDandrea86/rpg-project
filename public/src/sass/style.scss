@@ -1,26 +1,28 @@
+@import'colors';
 @import 'mainGame';
 @import 'playerSelect';
 @import 'responsive';
 @import 'titleMenu';
 @import'menusetting';
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
     position: relative;
-    background: -webkit-radial-gradient(rgb(22, 237, 160), rgb(20, 90, 71));
-    background: radial-gradient(rgb(22, 237, 160), rgb(20, 90, 71));
+    background-image: radial-gradient(rgba(22, 237, 160, 0.52), rgb(20, 90, 71)),
+    url('../image/background/493b39a0017626970362b990394a3d95.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
     font-family: 'Press Start 2P', cursive;
     button {
         font-family: 'Press Start 2P', cursive;
         font-size: 1.25rem;
         background: transparent;
-        // border-radius: 6%;
-        // border:1px solid rgb(20, 90, 71);
         border-style: none;
         width: 12rem;
         height: 3rem;
         &:hover {
-            color: rgb(20, 90, 71);
-            transform: scale(1.1) translateY(-1%);
+            transform: scale(1.1) translateY(-2%);
         }
     }
     input,

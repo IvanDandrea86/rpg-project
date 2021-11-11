@@ -4,11 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .console_action{
+        margin-bottom: 2rem;
+        li{
+        text-align: center;
+    }
+}
     .row {
         width: 80%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         .healthbar{
             border-radius: 25%;
             width:24px    ;
@@ -47,7 +53,7 @@
             left: 5px;
             width: fit-content;
             img {
-                width: 240px;
+                width: 210px;
                 align-self: baseline;
             }
         }
@@ -56,21 +62,22 @@
             position: absolute;
             top: 15px;
             right: -5%;
-            border: 1px solid red;
             width: fit-content;
             img {
-                width: 240px;
+                width: 210px;
                 transform: rotateY(180deg);
             }
         }
     }
     .log_container {
+        
         padding: 15px;
         display: flex;
         justify-content: center;
         width: 100%;
         flex-wrap: wrap;
         #actionBox {
+            background:radial-gradient(rgba(22, 237, 160, 0.52), rgb(20, 90, 71));
             width: fit-content;
             height: fit-content;
             display: flex;
@@ -81,6 +88,7 @@
         }
         #console,
         #turn_container {
+            background:radial-gradient(rgba(22, 237, 160, 0.52), rgb(20, 90, 71));
             margin-left: 10px;
             margin-right: 10px;
             width: 50%;
@@ -98,7 +106,7 @@
 
 
 table{
-    margin:5px
+    margin:5px;
     th{
     margin:5px;
     border:1px solid black; 

@@ -30,13 +30,16 @@ function Person(heroName, race, item) {
             let heal = (Math.floor(Math.random() * (this.maxHealing - this.min + 1) + this.min))
             this.currenthealth += heal
             writeOnConsole(`${this.heroName} heal ${heal} lifepoints`, console_action);
+            console.log("someé")
             if (this.currenthealth > this.maxHealth) {
                 this.currenthealth = this.maxHealth
             }
             return heal
         } else {
             writeOnConsole("Your Healt is alredy full", console_action)
+            console.log("someé")
         }
+
     };
 
     this.damage = () => {

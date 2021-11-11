@@ -112,6 +112,17 @@ const clearItemSelect = (htmlElem) => {
 const abilitychance = (ability) => { return (Math.random() < ability) }
 
 /**
+ * Switch
+ * @param {Person} attacker 
+ * @param {Person} defender 
+ */
+let switchHero=(attacker,defender)=>{
+    let temp =attacker;
+    attacker= defender;
+    defender=temp
+    writeOnConsole(`${attackergit.heroName} turn`, console_status)
+}
+/**
  * Damage Calculation
  *@param {Person} attacker 
  * @param {Person} defender 

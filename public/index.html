@@ -13,7 +13,7 @@
 <body>
 
     <header>
-        <button id="settings">Setting</button></header>
+       <img  id="settings" src="./src/image/Icons/icons8-settings.svg" alt=""> </header>
     <div id="menu_settings" style="display:none">
         <table id="settings_table">
             <td>SFX</td>
@@ -44,8 +44,9 @@
     <!-- Player Select Section -->
     <div id="player_select" style="display: none;">
         <div class="bg_container" id="backgroundSelect">
-            <div id="preview"></div>
             <label for="background">Arena</label>
+            <div id="preview"></div>
+           
             <select class="select-css" name="" id="background">
                 <option value="1"  selected="selected">The Orc Camp</option>
                 <option value="3">The Castel</option>
@@ -124,8 +125,8 @@
         <div class="log_container">
             <div id="stat_player1"></div>
             <div class="action" id="actionBox">
-                <button id="attack">Attack</button>
-                <button id="heal">Heal</button>
+                <button id="attack"><img src="./src/image/Icons/icons8-sword-50.png" style="width: 24px;"> Attack</button>
+                <button id="heal"><img src="./src/image/Icons/healing.png" style="width: 24px;"alt=""> Heal</button>
             </div>
             <div id="console">
                 <ul id="console_message"></ul>
