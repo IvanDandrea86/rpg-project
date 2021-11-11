@@ -111,17 +111,11 @@ let botAction=(obj,obj1)=>{
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
-        let temp = obj
-        obj = obj1
-        obj1 = temp
     }else{
         obj.heal()
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
-        let temp = obj
-        obj = obj1
-        obj1 = temp
     }  
 }
 /**
@@ -150,6 +144,10 @@ let takeActionVsBot = (obj, obj1) => {
         healBtn.style.display="none"
         setTimeout(()=>{
             botAction(obj,obj1)
+            let temp = obj
+            obj = obj1
+            obj1 = temp
+            writeOnConsole(` ${obj.heroName} turn`, console_status)
             attBtn.removeAttribute("style")
             healBtn.removeAttribute("style")},2000)
     })
@@ -165,6 +163,10 @@ let takeActionVsBot = (obj, obj1) => {
         writeOnConsole(` ${obj.heroName} turn`, console_status)
         setTimeout(()=>{
             botAction(obj,obj1)
+            let temp = obj
+            obj = obj1
+            obj1 = temp
+            writeOnConsole(` ${obj.heroName} turn`, console_status)
             attBtn.removeAttribute("style")
             healBtn.removeAttribute("style")},2000)
     })
