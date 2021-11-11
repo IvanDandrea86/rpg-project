@@ -1,3 +1,9 @@
+/**
+ * Selcet Image model based on the race and Item
+ * @param {String} race 
+ * @param {String} item 
+ * @returns 
+ */
 let selectModel=(race,item)=>{
     let modelNumber
     switch(race){

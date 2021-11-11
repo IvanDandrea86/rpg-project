@@ -40,6 +40,8 @@ const console_action = document.getElementById("console")
 const stat = document.getElementById("player1_stats")
 const stat_1 = document.getElementById("player2_stats")
 const startBtn = document.getElementById("start_button")
+const attBtn= document.getElementById("attack")
+const healBtn= document.getElementById("heal")
 const btnReset =document.getElementById("reset")
 const sfxBtn =document.getElementById  ("sfx")
 const musicBtn=document.getElementById("music")
@@ -66,20 +68,29 @@ let selectFirstPlayerTurn = (player1, player2) => {
         return player2
     }
 }
+/**
+ * End Game PopUp Activate
+ */
 let endGame = () => {
     document.querySelectorAll(".action button").forEach(elem => {
         elem.disabled = "true"
     })
     popUpEnd.removeAttribute("style")
 }
+/**
+ * Listener for action 
+ * @param {Person} obj -attacker 
+ * @param {Person} obj1 -defender
+ */
 let takeAction = (obj, obj1) => {
-    document.getElementById("attack").addEventListener("click", () => {
+    attBtn.addEventListener("click", () => {
         hit.play()
         setTimeout(()=>{hurt.play()},500)
         damageCalculation(obj, obj1)
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
+        
         if (gameEnd) {
             endGame()
             return
@@ -90,8 +101,7 @@ let takeAction = (obj, obj1) => {
         obj1 = temp
         writeOnConsole(`${obj.heroName} turn`, console_status)
     })
-    document.getElementById("heal").addEventListener("click", () => {
-        let y = obj.heal()
+   healBtn.addEventListener("click", () => {
         updateHealthBar(obj)
         updateHealthBar(obj1)
         gameEnd = checkLifeline(obj, obj1)
@@ -102,7 +112,11 @@ let takeAction = (obj, obj1) => {
     })
 }
 
-
+/**
+ *Start Battle 
+ * @param {Person} obj -player 1
+ * @param {Person} obj1 - player 2
+ */
 let startBattle = (obj, obj1) => {
     let player1_img = document.getElementById("player1_img")
     let player2_img = document.getElementById("player2_img")
@@ -117,8 +131,8 @@ let startBattle = (obj, obj1) => {
     drawStat(stat_1, hero2)
 
 
-    animateImg(player1_img, obj.race, "ATTACK", model, timer1)
-    animateImg(player2_img, obj1.race, "DIE", model2, timer2)
+    animateImg(player1_img, obj.race, "IDLE", model, timer1)
+    animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
     attacker = selectFirstPlayerTurn(hero, hero2)
     writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {
@@ -128,9 +142,10 @@ let startBattle = (obj, obj1) => {
     }
     takeAction(attacker, defender)
 }
-
+/**
+ * Create dynamic select vs player2 menu
+ */
 let createMenuSelect = () => {
-    
     gameTitle.style.display = "none"
     selectPlayer.removeAttribute("style")
     createRaceList(racesList, url_class)
@@ -150,6 +165,9 @@ let createMenuSelect = () => {
         document.getElementById("item_container2").removeAttribute("style")
     })
 }
+/**
+ * Create dynamic select vs Bot
+ */
 let createMenuBot = () => {
     
     gameTitle.style.display = "none"
@@ -165,30 +183,27 @@ let createMenuBot = () => {
         document.getElementById("item_container").removeAttribute("style")
     })
 }
-
-   
-
-
-
-    
-
-
+/**
+ * Update Background Selection
+ * @param {HtmlElement} element 
+ * @param {String} bgname 
+ */
 let changeBackgroundPreview = (element, bgname) => {
         element.style.backgroundImage = `url('./src/image/background/PNG/game_background_${bgname}/game_background_${bgname}.png')`
         backGround = bgname
     }
-    /*
-      hide functioon
-     */
+/*
+    Settings hide functioon
+*/
 let hide = () => {
 
         let menu = document.getElementById("menu_settings")
         menu.style.display = "none"
     }
     /**
-         Is OPEN functioon
-        @returns {boolean} 
-        */
+    *      Is OPEN functioon
+    * @returns {boolean} 
+    */
 let isopen = () => {
     let menu = document.getElementById("menu_settings")
     if (menu.style.display == "none") return false
@@ -206,28 +221,25 @@ btnMenu.addEventListener("click", () => {
 })
 
 
-//Start Audio
 
 
+//Start Main Load Event
 window.addEventListener("load", () => {
+    //setting menu
     btnReset.addEventListener("click",()=>{})
     sfxBtn.addEventListener("change",()=>{
-        click.volume=0
-        hit.volume=0
-        console.log("fdkifjd")
+    click.volume=0
+    hit.volume=0
+    console.log("fdkifjd")
     hurt.volume=0})
     musicBtn.addEventListener("change",()=>{audioIntro.pause()})
     changeBackgroundPreview(backgroundPreviewImg, valueBackground)
-  document.getElementById("vsP2").addEventListener("click", () => {
+    document.getElementById("vsP2").addEventListener("click", () => {
     audioIntro.play()
     createMenuSelect()
-
-    
-        //vs P2 mode
-    addPlayer2Btn.addEventListener("click", () => {
-        
-        
-        
+    //vs P2 mode
+    addPlayer2Btn.addEventListener("click", () => {    
+        //Selcet Player 1
         let hero_name = document.getElementById("name").value
         let hero_race = document.getElementById("races").value
         let hero_item = document.getElementById("item").value
@@ -242,13 +254,14 @@ window.addEventListener("load", () => {
         p1ready = true
         control()
     })
+    //Select Background
     backgroundPreview.addEventListener("click", () => {
         valueBackground = backgroundPreview.value
         changeBackgroundPreview(backgroundPreviewImg, valueBackground)
     })
+    //Selecet Player 2
     addPlayerBtn.addEventListener("click", () => {
         let hero_name2 = document.getElementById("name2").value
-
         let hero_race2 = document.getElementById("races2").value
         let hero_item2 = document.getElementById("item2").value
         hero2.heroName = hero_name2
@@ -262,41 +275,37 @@ window.addEventListener("load", () => {
         p2ready = true
         control()
     })
-
+    // Star Battle
     startBtn.addEventListener("click", () => {
         startBattle(hero, hero2)
     })
-
     })
     document.getElementById("vsCPU").addEventListener("click", () => {
         //vs CPU mode
         createMenuBot()
-        createBot(hero2,hero)
-        console.log(hero2)
+        createBot(hero2)
+        //Create Bot 
         addPlayer2Btn.addEventListener("click", () => {
-        
+            //sELECET pLAYER 1
             let hero_name = document.getElementById("name").value
             let hero_race = document.getElementById("races").value
             let hero_item = document.getElementById("item").value
             hero.heroName = hero_name
             hero.race = hero_race
             hero.item = hero_item
-            createBot(hero2,hero)
+            updateRace(hero, url_class)
+            updateItem(hero, url_item)
             model = selectModel(hero_race, hero_item)
             model = model.toString()
             addPlayer2Btn.disabled = true
             p1ready = true
-            drawStat(stat_1, hero2)
-            drawStat(stat,hero)
+            console.log(hero[0])
             if (p1ready){
+               //sTART VS bOT
                 startBattleBot(hero, hero2)
-              
-                
             }
         })
     })
-
-
 })
 
 

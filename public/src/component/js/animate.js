@@ -15,7 +15,8 @@ let setBackGroundImg=(set)=>{
  * @param {String} race 
  * @param {String} mode 
  * @param {String} color 
- */
+* @param {Number} timer_animation
+*/
 let animateImg=(elem,race,mode,color,timer_animation)=>{
     timer_animation=setInterval(() => {
     const maxFrame=10  
@@ -26,6 +27,14 @@ let animateImg=(elem,race,mode,color,timer_animation)=>{
     }
 }, 150);
 }
+/**
+ * Change Animation
+ * @param {HTMLElement} elem 
+ * @param {String} race 
+ * @param {String} mode 
+ * @param {String} color 
+* @param {Number} timer_animation
+*/
 let changeAnimation=(elem,race,mode,color,timer_animation)=>{
     clearInterval(timer_animation)
     timer_animation=setInterval(() => {

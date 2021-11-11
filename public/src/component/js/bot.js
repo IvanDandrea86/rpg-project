@@ -1,5 +1,18 @@
-
-let randomRaceBot=(obj,obj2)=>{
+/**
+ *Create Bot 
+ * @param {Person} obj - Object Person
+ * 
+ */
+let createBot=(obj)=>{
+    obj.heroName="Bot Warrior"
+    randomRaceBot(obj)
+}
+/**
+ *Initialize Random parameter 
+ * @param {Person} obj - Object Person
+ * 
+ */
+let randomRaceBot=(obj)=>{
     var races_list=new Array()
         dataFetchAsync(url_class)
         .then(data=>{
@@ -12,7 +25,6 @@ let randomRaceBot=(obj,obj2)=>{
             obj.race=races_list[index]
             var index1= Math.floor((Math.random()*3)+1)
            if (obj.race =='Elf') {
-               console.log(index1)
                     switch (index1){
                         case 1:{
                             obj.item ='Bow'
@@ -29,8 +41,6 @@ let randomRaceBot=(obj,obj2)=>{
                     }
              }
             if  (obj.race =='Knight'){
-                console.log(index1)
-    
                     switch (index1){
                         case 1:{
                             obj.item ='Spear'
@@ -47,8 +57,6 @@ let randomRaceBot=(obj,obj2)=>{
                 }
             }
             if (obj.race=='Orc'){
-                console.log(index1)
-    
                     switch (index1){
                         case 1:{
                             obj.item ='Hammer'
@@ -65,7 +73,6 @@ let randomRaceBot=(obj,obj2)=>{
                 }
             }
             if(obj.race== 'Troll'){
-                console.log(index1)
     
                     switch (index1){
                         case 1:{
@@ -84,39 +91,16 @@ let randomRaceBot=(obj,obj2)=>{
             }
         model2 = selectModel(obj.race, obj.item) 
             model2 = model2.toString()
-            console.log(model2)
             updateRace(obj, url_class)
             updateItem(obj, url_item)
-           
-            updateRace(obj2, url_class)
-            updateItem(obj2, url_item)
         
         })      
 }
-let createBot=(obj,obj2)=>{
-    obj.heroName="Bot Warrior"
-    randomRaceBot(obj,obj2)
-}
-let startBattleBot = (obj, obj1) => {
-    let player1_img = document.getElementById("player1_img")
-    let player2_img = document.getElementById("player2_img")
-    document.getElementById("player1_health").id=`${obj.heroName.replace(" ","")}_health`
-    document.getElementById("player2_health").id=`${obj1.heroName.replace(" ","")}_health`
-    selectPlayer.style.display = "none"
-    main_game.removeAttribute("style")
-    writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
-    setBackGroundImg(backGround)
-    animateImg(player1_img, obj.race, "ATTACK", model, timer1)
-    animateImg(player2_img, obj1.race, "DIE", model2, timer2)
-    attacker = selectFirstPlayerTurn(hero, hero2)
-    writeOnConsole(`${attacker.heroName} start first`, console_status)
-    if (attacker == obj) {
-        defender = obj1
-    } else {
-        defender = obj
-    }
-    takeActionVsBot(attacker, defender)
-}
+/**
+ * Bot Action
+ * @param {Person} obj - Object Person
+ * @param {Person} obj1 - Object person
+ */
 let botAction=(obj,obj1)=>{
     let random_action=(Math.floor(Math.random()*2+1))
     console.log(random_action)
@@ -140,8 +124,11 @@ let botAction=(obj,obj1)=>{
         obj1 = temp
     }  
 }
-const attBtn= document.getElementById("attack")
-const healBtn= document.getElementById("heal")
+/**
+ * Take Player 1 action anvs vai for Bot
+ * @param {Person} obj - Object Person
+ * @param {Person} obj1 - Object person
+ */
 let takeActionVsBot = (obj, obj1) => {
     attBtn.addEventListener("click", () => {
         hit.play()
@@ -182,3 +169,34 @@ let takeActionVsBot = (obj, obj1) => {
             healBtn.removeAttribute("style")},2000)
     })
 }
+/**
+ *  Start battle vs Bot
+ * @param {Person} obj - 
+ * @param {Person} obj1 -
+ */
+let startBattleBot = (obj, obj1) => {
+    let player1_img = document.getElementById("player1_img")
+    let player2_img = document.getElementById("player2_img")
+
+    drawStat(stat,obj)  
+    drawStat(stat_1, obj1)
+ 
+    document.getElementById("player1_health").id=`${obj.heroName.replace(" ","")}_health`
+    document.getElementById("player2_health").id=`${obj1.heroName.replace(" ","")}_health`
+    selectPlayer.style.display = "none"
+    main_game.removeAttribute("style")
+    writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
+    setBackGroundImg(backGround)
+    animateImg(player1_img, obj.race, "IDLE", model, timer1)
+    animateImg(player2_img, obj1.race, "IDLE", model2, timer2)
+    attacker = selectFirstPlayerTurn(hero, hero2)
+    writeOnConsole(`${attacker.heroName} start first`, console_status)
+    if (attacker == obj) {
+        defender = obj1
+    } else {
+        defender = obj
+    }
+    takeActionVsBot(attacker, defender)
+}
+
+
