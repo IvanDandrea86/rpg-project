@@ -47,6 +47,8 @@ const healBtn= document.getElementById("heal")
 const btnReset =document.getElementById("reset")
 const sfxBtn =document.getElementById  ("sfx")
 const musicBtn=document.getElementById("music")
+var player1_img = document.getElementById("player1_img")
+var player2_img = document.getElementById("player2_img")
 let control = () => {
 
     if (p1ready == true && p2ready == true) {
@@ -144,25 +146,32 @@ let takeAction = (obj, obj1) => {
  * @param {Person} obj1 - player 2
  */
 let startBattle = (obj, obj1) => {
-   
     document.getElementById("player1_health").id=`${obj.heroName.replace(" ","")}_health`
     document.getElementById("player2_health").id=`${obj1.heroName.replace(" ","")}_health`
     selectPlayer.style.display = "none"
     main_game.removeAttribute("style")
-
     writeOnConsole(`The Battle between ${hero.heroName}and ${hero2.heroName} has started`, console_status)
     setBackGroundImg(backGround)
     drawStat(stat, hero)
     drawStat(stat_1, hero2)
-
-
-    
     attacker = selectFirstPlayerTurn(hero, hero2)
     writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {
         defender = obj1
+        let temp1 = player1_img
+        player1_img= player2_img
+        player2_img = temp1
+        let temp3 = model
+        model= model2
+        model2 = temp3
     } else {
         defender = obj
+        let temp1 = player1_img
+        player1_img= player2_img
+        player2_img = temp1
+        let temp3 = model
+        model= model2
+        model2 = temp3
     }
     takeAction(attacker, defender)
 }
