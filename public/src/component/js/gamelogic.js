@@ -120,7 +120,7 @@ let switchHero=(attacker,defender)=>{
     let temp =attacker;
     attacker= defender;
     defender=temp
-    writeOnConsole(`${attackergit.heroName} turn`, console_status)
+    writeOnConsole(`${attacker.heroName} turn`, console_status)
 }
 /**
  * Damage Calculation
@@ -228,7 +228,11 @@ let writeOnConsole = (string, parentNode) => {
  * @param {Person} obj -Person 
  */
 let updateHealthBar = (obj) => {
+    let health =obj.currenthealth
+    if (health<0){
+        health =0
+    }
     let htmlElem = document.querySelector(`#${obj.heroName.replace(" ", "")}_health .bar`)
-    let healt_percent = (obj.currenthealth / obj.maxHealth) * 100
+    let healt_percent = (health / obj.maxHealth) * 100
     htmlElem.style.height = `${healt_percent}%`
 }

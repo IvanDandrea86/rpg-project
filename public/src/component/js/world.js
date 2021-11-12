@@ -71,7 +71,7 @@ let selectFirstPlayerTurn = (player1, player2) => {
     }
 }
 /**
- * End Game PopUp Activate
+ * End Game PopUp Activate                                  
  */
 let endGame = () => {
     document.querySelectorAll(".action button").forEach(elem => {
@@ -82,21 +82,19 @@ let endGame = () => {
 /**
  * Listener for action 
  * @param {Person} obj -attacker 
- * @param {Person} obj1 -defender
+* @param {Person} obj1 -defender
  */
 let takeAction = (obj, obj1) => {
-        
-         Interval1=setInterval(() => {
+        Interval1=setInterval(() => {
         SetAnimationImg(player1_img, obj.race, "IDLE", model)
         }, 100);    
         Interval2 =setInterval(()=>{ 
         SetAnimationImg(player2_img, obj1.race, "IDLE", model2)
         },100)
-
     attBtn.addEventListener("click", () => {
         hit.play()
         clearInterval(Interval1)
-        ChangeAnimationImg(player1_img, obj.race, "ATTACK", model)
+        ChangeAnimationImg(player1_img, obj.race, "ATTACK", model)  
         setTimeout(()=>{
             clearInterval(Interval2)
             ChangeAnimationImg(player2_img, obj1.race, "HURT", model2)  
@@ -130,6 +128,12 @@ let takeAction = (obj, obj1) => {
         let temp = obj
         obj = obj1
         obj1 = temp
+        let temp1 = player1_img
+        player1_img= player2_img
+        player2_img = temp1
+        let temp3 = model
+        model= model2
+        model2 = temp3
         writeOnConsole(` ${obj.heroName} turn`, console_status)
     })
 }
@@ -140,8 +144,7 @@ let takeAction = (obj, obj1) => {
  * @param {Person} obj1 - player 2
  */
 let startBattle = (obj, obj1) => {
-    let player1_img = document.getElementById("player1_img")
-    let player2_img = document.getElementById("player2_img")
+   
     document.getElementById("player1_health").id=`${obj.heroName.replace(" ","")}_health`
     document.getElementById("player2_health").id=`${obj1.heroName.replace(" ","")}_health`
     selectPlayer.style.display = "none"

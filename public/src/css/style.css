@@ -101,7 +101,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  height: 25vh;
+  height: 30vh;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -147,7 +147,6 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  max-height: 100%;
   border: 2px solid black;
   -webkit-box-shadow: 5.5px 5.5px darkslategrey;
           box-shadow: 5.5px 5.5px darkslategrey;
@@ -155,8 +154,8 @@
 
 #main_game .log_container #console li,
 #main_game .log_container #turn_container li {
-  list-style: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");
-  margin: 15px;
+  font-size: 1rem;
+  margin: 5px;
 }
 
 table {
