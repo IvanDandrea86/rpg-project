@@ -158,20 +158,11 @@ let startBattle = (obj, obj1) => {
     writeOnConsole(`${attacker.heroName} start first`, console_status)
     if (attacker == obj) {
         defender = obj1
-        let temp1 = player1_img
-        player1_img= player2_img
-        player2_img = temp1
-        let temp3 = model
-        model= model2
-        model2 = temp3
+     
     } else {
+        attacker=obj1
         defender = obj
-        let temp1 = player1_img
-        player1_img= player2_img
-        player2_img = temp1
-        let temp3 = model
-        model= model2
-        model2 = temp3
+       
     }
     takeAction(attacker, defender)
 }
